@@ -1,0 +1,149 @@
+DROP DATABASE IF EXISTS ilos;
+CREATE DATABASE `ilos`;
+USE `ilos`;
+
+CREATE TABLE player_auth (
+  id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  session VARCHAR(255),
+  PRIMARY KEY(id),
+  UNIQUE KEY(name),
+  UNIQUE KEY (email)
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+
+
+
+
+
+
+
+
+# 
+# CREATE TABLE player_info (
+#   id INT NOT NULL AUTO_INCREMENT,
+#   location INT NOT NULL DEFAULT 1,
+#   PRIMARY KEY(id),
+#   FOREIGN KEY (id) REFERENCES player_auth(id) ON DELETE CASCADE
+# ) ENGINE=INNODB DEFAULT CHARSET=utf8;
+# 
+# CREATE TABLE player_slot (
+#   id INT NOT NULL AUTO_INCREMENT,
+#   slot_1 BIGINT NOT NULL DEFAULT 0,
+#   slot_2 BIGINT NOT NULL DEFAULT 0,
+#   slot_3 BIGINT NOT NULL DEFAULT 0,
+#   slot_4 BIGINT NOT NULL DEFAULT 0,
+#   slot_5 BIGINT NOT NULL DEFAULT -1,
+#   slot_6 BIGINT NOT NULL DEFAULT -1,
+#   slot_7 BIGINT NOT NULL DEFAULT -1,
+#   slot_8 BIGINT NOT NULL DEFAULT -1,
+#   slot_9 BIGINT NOT NULL DEFAULT -1,
+#   slot_10 BIGINT NOT NULL DEFAULT -1,
+#   PRIMARY KEY(id),
+#   FOREIGN KEY(id) REFERENCES player_auth(id) ON DELETE CASCADE
+# ) ENGINE=INNODB DEFAULT CHARSET=utf8;
+# 
+# CREATE TABLE location (
+#   id INT NOT NULL AUTO_INCREMENT,
+#   name VARCHAR(255) NOT NULL,
+#   PRIMARY KEY(id)
+# ) ENGINE=INNODB DEFAULT CHARSET=utf8;
+# 
+# CREATE TABLE loc_object (
+#   loc_id INT NOT NULL,
+#   name VARCHAR(255) NOT NULL,
+#   object_type ENUM('loc','store') NOT NULL,
+#   object_id INT NOT NULL,
+#   UNIQUE KEY loc_object(loc_id,object_type,object_id),
+#   FOREIGN KEY (loc_id) REFERENCES location(id) ON DELETE CASCADE
+# ) ENGINE=INNODB DEFAULT CHARSET=utf8;
+# 
+# CREATE TABLE item_base(
+#   id INT NOT NULL AUTO_INCREMENT,
+#   name VARCHAR(255) NOT NULL,
+#   img VARCHAR(255) NOT NULL,
+#   level INT NOT NULL,
+#   cost INT NOT NULL,
+#   weight TINYINT(1) NOT NULL DEFAULT 1,
+#   private TINYINT(1) NOT NULL DEFAULT 0,
+#   stack TINYINT(1) NOT NULL DEFAULT 1,
+#   action ENUM('use','take','none') NOT NULL DEFAULT 'none',
+#   slot ENUM('head',
+#     'gloves',
+#     'leggings',
+#     'boots',
+#     'hauberk',
+#     'belt',
+#     'cuirass',
+#     'shoulders',
+#     'leftHand',
+#     'rightHand',
+#     'twoHanded',
+#             'food',
+#             'none',
+#             'elixir',
+#             'gig',
+#             'vamp',
+#             'heal',
+#             'mosh',
+#             'krit') NOT NULL DEFAULT 'none',
+#   PRIMARY KEY(id)
+# )ENGINE=INNODB DEFAULT CHARSET=utf8;
+# 
+# CREATE TABLE item_param(
+#   id INT NOT NULL AUTO_INCREMENT,
+#   item_id INT NOT NULL,
+#   param ENUM('hp','pov','mindam','maxdam','int', 'pro', 'agi','vamp','krit','slotsize','timeact') NOT NULL,
+#   value INT NOT NULL,
+#   PRIMARY KEY(id),
+#   KEY(item_id),
+#   UNIQUE KEY item_param(item_id,param),
+#   FOREIGN KEY(item_id) REFERENCES item_base(id) ON DELETE CASCADE
+# ) ENGINE=INNODB DEFAULT CHARSET=utf8;
+# 
+# 
+# CREATE TABLE player_item(
+#   id BIGINT NOT NULL AUTO_INCREMENT,
+#   player_id INT NOT NULL,
+#   item_id INT NOT NULL,
+#   inventory ENUM('backpack','body','slot') NOT NULL DEFAULT 'backpack',
+#   amount INT NOT NULL DEFAULT 1,
+#   PRIMARY KEY(id),
+#   KEY (player_id),
+#   FOREIGN KEY(player_id) REFERENCES player_auth(id) ON DELETE CASCADE,
+#   FOREIGN KEY(item_id) REFERENCES item_base(id) ON DELETE CASCADE
+# ) ENGINE=INNODB DEFAULT CHARSET=utf8;
+# 
+# CREATE TABLE store (
+#   id INT NOT NULL AUTO_INCREMENT,
+#   name VARCHAR(255) NOT NULL,
+#   PRIMARY KEY(id)
+# )ENGINE=INNODB DEFAULT CHARSET=utf8;
+# 
+# CREATE TABLE store_tab (
+#   id INT NOT NULL AUTO_INCREMENT,
+#   name VARCHAR(255) NOT NULL,
+#   PRIMARY KEY(id)
+# )ENGINE=INNODB DEFAULT CHARSET=utf8;
+# 
+# CREATE TABLE store_store_tab (
+#   id INT NOT NULL AUTO_INCREMENT,
+#   store_id INT NOT NULL,
+#   store_tab_id INT NOT NULL,
+#   PRIMARY KEY(id),
+#   UNIQUE KEY store_store_tab(store_id,store_tab_id),
+#   FOREIGN KEY (store_id) REFERENCES store(id) ON DELETE CASCADE,
+#   FOREIGN KEY (store_tab_id) REFERENCES store_tab(id) ON DELETE CASCADE
+# ) ENGINE=INNODB DEFAULT CHARSET=utf8;
+# 
+# CREATE TABLE store_tab_item_base (
+#   id INT NOT NULL AUTO_INCREMENT,
+#   store_tab_id INT NOT NULL,
+#   item_base_id INT NOT NULL,
+#   PRIMARY KEY(id),
+#   UNIQUE KEY store_tab_item_base(store_tab_id,item_base_id),
+#   FOREIGN KEY (store_tab_id) REFERENCES store_tab(id) ON DELETE CASCADE,
+#   FOREIGN KEY (item_base_id) REFERENCES item_base(id) ON DELETE CASCADE
+# ) ENGINE=INNODB DEFAULT CHARSET=utf8;

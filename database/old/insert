@@ -1,0 +1,85 @@
+USE `wod`;
+
+
+
+INSERT INTO player_stat(player_id, stat, value) VALUES (1,'hp',200);
+INSERT INTO player_stat(player_id, stat, value) VALUES (1,'mhp',200);
+INSERT INTO player_stat(player_id, stat, value) VALUES (1,'pov',100);
+INSERT INTO player_stat(player_id, stat, value) VALUES (1,'mindam',10);
+INSERT INTO player_stat(player_id, stat, value) VALUES (1,'maxdam',20);
+
+INSERT INTO player_stat(player_id, stat, value) VALUES (2,'hp',200);
+INSERT INTO player_stat(player_id, stat, value) VALUES (2,'mhp',200);
+INSERT INTO player_stat(player_id, stat, value) VALUES (2,'pov',100);
+INSERT INTO player_stat(player_id, stat, value) VALUES (2,'mindam',10);
+INSERT INTO player_stat(player_id, stat, value) VALUES (2,'maxdam',20);
+
+INSERT INTO player_stat(player_id, stat, value) VALUES (3,'hp',200);
+INSERT INTO player_stat(player_id, stat, value) VALUES (3,'mhp',200);
+INSERT INTO player_stat(player_id, stat, value) VALUES (3,'pov',100);
+INSERT INTO player_stat(player_id, stat, value) VALUES (3,'mindam',10);
+INSERT INTO player_stat(player_id, stat, value) VALUES (3,'maxdam',20);
+
+INSERT INTO player_stat(player_id, stat, value) VALUES (4,'hp',200);
+INSERT INTO player_stat(player_id, stat, value) VALUES (4,'mhp',200);
+INSERT INTO player_stat(player_id, stat, value) VALUES (4,'pov',100);
+INSERT INTO player_stat(player_id, stat, value) VALUES (4,'mindam',10);
+INSERT INTO player_stat(player_id, stat, value) VALUES (4,'maxdam',20);
+
+
+
+
+
+
+
+
+
+
+
+
+
+INSERT INTO mob_info(name, level) VALUES ('Крыса',1);
+INSERT INTO mob_info(name, level) VALUES ('Паук',2);
+INSERT INTO mob_info(name, level) VALUES ('Босс',10);
+INSERT INTO mob_info(name, level) VALUES ('МЕГА БОСС',9999);
+
+INSERT INTO mob_stat(mob_id, stat, value) VALUES (1,'hp',100);
+INSERT INTO mob_stat(mob_id, stat, value) VALUES (1,'mhp',100);
+INSERT INTO mob_stat(mob_id, stat, value) VALUES (1,'pov',30);
+INSERT INTO mob_stat(mob_id, stat, value) VALUES (1,'mindam',5);
+INSERT INTO mob_stat(mob_id, stat, value) VALUES (1,'maxdam',10);
+
+INSERT INTO mob_stat(mob_id, stat, value) VALUES (2,'hp',150);
+INSERT INTO mob_stat(mob_id, stat, value) VALUES (2,'mhp',150);
+INSERT INTO mob_stat(mob_id, stat, value) VALUES (2,'pov',60);
+INSERT INTO mob_stat(mob_id, stat, value) VALUES (2,'mindam',9);
+INSERT INTO mob_stat(mob_id, stat, value) VALUES (2,'maxdam',16);
+
+INSERT INTO mob_stat(mob_id, stat, value) VALUES (3,'hp',2000);
+INSERT INTO mob_stat(mob_id, stat, value) VALUES (3,'mhp',2000);
+INSERT INTO mob_stat(mob_id, stat, value) VALUES (3,'pov',100);
+INSERT INTO mob_stat(mob_id, stat, value) VALUES (3,'mindam',20);
+INSERT INTO mob_stat(mob_id, stat, value) VALUES (3,'maxdam',40);
+
+INSERT INTO mob_stat(mob_id, stat, value) VALUES (4,'hp',9999);
+INSERT INTO mob_stat(mob_id, stat, value) VALUES (4,'mhp',9999);
+INSERT INTO mob_stat(mob_id, stat, value) VALUES (4,'pov',99);
+INSERT INTO mob_stat(mob_id, stat, value) VALUES (4,'mindam',59);
+INSERT INTO mob_stat(mob_id, stat, value) VALUES (4,'maxdam',99);
+
+
+INSERT INTO loc_object(loc_id, object_type, object_id) VALUES (1,'mob',1);
+INSERT INTO loc_object(loc_id, object_type, object_id) VALUES (1,'mob',2);
+INSERT INTO loc_object(loc_id, object_type, object_id) VALUES (1,'mob',3);
+INSERT INTO loc_object(loc_id, object_type, object_id) VALUES (1,'mob',4);
+
+INSERT INTO loc_object(loc_id, object_type, object_id) VALUES (2,'mob',1);
+INSERT INTO loc_object(loc_id, object_type, object_id) VALUES (2,'mob',2);
+
+INSERT INTO loc_object(loc_id, object_type, object_id) VALUES (6,'mob',1);
+INSERT INTO loc_object(loc_id, object_type, object_id) VALUES (6,'mob',2);
+
+
+
+
+
