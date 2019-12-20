@@ -37,7 +37,7 @@ class PacketLocation(location:Location) extends Packet {
                     location.asInstanceOf[LocationMine].height,
                     location.warps.map(w => new PWarp(w.name,w.x,w.y)),
                     location.asInstanceOf[LocationMine].tileGrounds,
-                    location.asInstanceOf[LocationMine].resources.map(r => new PResource(r.item.id,r.amount,r.x,r.y)).toArray,
+                    location.asInstanceOf[LocationMine].resources.map(r => new PResource(r.item.scr,r.amount,r.x,r.y)).toArray,
                     location.asInstanceOf[LocationMine].mineType
                 )
 

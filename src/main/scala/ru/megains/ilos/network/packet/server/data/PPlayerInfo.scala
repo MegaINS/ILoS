@@ -6,7 +6,7 @@ import ru.megains.ilos.player.Player
 import scala.beans.BeanProperty
 
 
-@BeanProperty class PPlayerInfo(player: Player) {
+class PPlayerInfo(player: Player) {
 
     @BeanProperty val name: String = player.name
 

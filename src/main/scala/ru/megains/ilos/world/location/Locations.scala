@@ -41,11 +41,25 @@ object Locations {
         locations += hab2.id -> hab2
         locations += hab3.id -> hab3
 
-        val resGen1 = Array(new ResGen(Items.getItem(1),1,5,10),new ResGen(Items.getItem(2),1,3,5))
+        val resGen1 = Array(
+            new ResGen(Items.getItem(0),1,5,10),
+            new ResGen(Items.getItem(1),1,3,5),
+            new ResGen(Items.getItem(2),1,2,1)
+        )
+        val resGen2 = Array(
+            new ResGen(Items.getItem(6),1,5,10),
+            new ResGen(Items.getItem(7),1,3,5),
+            new ResGen(Items.getItem(8),1,2,1)
+        )
+        val resGen3 = Array(
+            new ResGen(Items.getItem(3),1,5,10),
+            new ResGen(Items.getItem(4),1,3,5),
+            new ResGen(Items.getItem(5),1,2,1)
+        )
 
         val mine1 = new LocationMine(2,"mine 1",GameClass.CLASS_0,1,MineType.MINE,warps2,resGen1)
-        val forest1 = new LocationMine(3,"forest 1",GameClass.CLASS_0,1,MineType.FOREST,warps3,Array.empty)
-        val meadow1 = new LocationMine(4,"meadow 1",GameClass.CLASS_0,1,MineType.MEADOW,warps4,Array.empty)
+        val forest1 = new LocationMine(3,"forest 1",GameClass.CLASS_0,1,MineType.FOREST,warps3,resGen2)
+        val meadow1 = new LocationMine(4,"meadow 1",GameClass.CLASS_0,1,MineType.MEADOW,warps4,resGen3)
 
 
         mine1.createMine()

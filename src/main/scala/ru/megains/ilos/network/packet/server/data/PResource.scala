@@ -1,9 +1,10 @@
 package ru.megains.ilos.network.packet.server.data
 
-class PResource(id:Int,amount:Int,x:Int,y:Int) {
+import scala.beans.BeanProperty
 
-    def getId: Int = id
-    def getAmount: Int = amount
-    def getX: Int = x
-    def getY: Int = y
+class PResource(@BeanProperty val scr:String,
+                @BeanProperty val amount:Int,
+                @BeanProperty val x:Int,
+                @BeanProperty val y:Int) {
+
 }

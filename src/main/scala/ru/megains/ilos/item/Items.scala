@@ -15,10 +15,18 @@ object Items {
 
     def load(): Unit = {
 
-        items += 1 -> new Item(1, "Ржавае железо",0,10,"materials-35")
-        items += 2 -> new Item(2, "Чугун",1,50,"materials-28")
+        items += 0 -> new Item(0, "Ржавае железо",0,10,"materials-30")
+        items += 1 -> new Item(1, "Чугун",1,50,"materials-23")
+        items += 2 -> new Item(2, "Медь",1,25,"materials-29")
 
 
+        items += 3 -> new Item(3, "Кролик",0,10,"materials-18")
+        items += 4 -> new Item(4, "Ольнь",1,50,"materials-92")
+        items += 5 -> new Item(5, "Кабан",1,25,"materials-80")
+
+        items += 6 -> new Item(6, "Трухлявый тополь",0,10,"materials-49")
+        items += 7 -> new Item(7, "Ясень ",1,50,"materials-5")
+        items += 8 -> new Item(8, "Осина",1,25,"materials-2")
     }
 
     def createItemStack(item: Item, amount:Int): ItemStack ={
