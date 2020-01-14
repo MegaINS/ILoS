@@ -1,12 +1,9 @@
 package ru.megains.ilos
 
 import com.corundumstudio.socketio.{Configuration, SocketIOServer}
-import ru.megains.ilos.item.Items
 import ru.megains.ilos.network.packet.client.data.{ChatObject, PacketDataAction}
 import ru.megains.ilos.network.packet.client.{PacketAction, PacketChatEvent, PacketConnect}
 import ru.megains.ilos.utils.Logger
-import ru.megains.ilos.world.location.Locations
-import ru.megains.ilos.world.warp.Warps
 
 class IloSServer(config:Configuration) extends Logger[IloSServer]{
 
@@ -21,13 +18,9 @@ class IloSServer(config:Configuration) extends Logger[IloSServer]{
     def start(): Unit = {
 
         log.info("Start IloSServer")
-        log.info("Load Items")
-        Items.load()
+        log.info("Bootstrap init")
+        Bootstrap.init()
 
-        log.info("Load Warps")
-        Warps.load()
-        log.info("Load Locations")
-        Locations.load()
 
         log.info("Start GameLogicHandler")
         gameLogicHandler.start()

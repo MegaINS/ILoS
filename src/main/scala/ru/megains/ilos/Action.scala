@@ -7,7 +7,8 @@ object Action extends Enumeration {
     SPAWN,
     REMOVE,
     ENTER,
-    CLICK
+    CLICK,
+    BUY_ITEM
     = Value
 
 }

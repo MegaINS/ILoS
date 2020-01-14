@@ -33,8 +33,8 @@ abstract class Location(val id: Int, val name: String, val warps: Array[Warp]) {
 
 
         player.location = this
-        player.sendPacket(new PacketLocation(this))
-        player.sendPacket(new PacketPlayerUpdate(Action.SPAWN, player))
+        sendData(player)
+
         val packet = new PacketAddPlayerList(player)
         val packet1 = new PacketEnemyUpdate(Action.SPAWN, player)
         players.foreach(p => {
@@ -43,6 +43,11 @@ abstract class Location(val id: Int, val name: String, val warps: Array[Warp]) {
         })
         players += player
         sendPlayerList(player)
+    }
+
+    def sendData(player:Player): Unit ={
+        player.sendPacket(new PacketLocation(this))
+        player.sendPacket(new PacketPlayerUpdate(Action.SPAWN, player))
     }
 
     def exit(player: Player): Unit = {

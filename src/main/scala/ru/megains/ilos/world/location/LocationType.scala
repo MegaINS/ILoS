@@ -6,6 +6,7 @@ object LocationType extends Enumeration {
     val
     OPEN,
     HAB,
-    MINE = Value
+    MINE,
+    SHOP = Value
 
 }

@@ -3,19 +3,23 @@ package ru.megains.ilos.network
 import ru.megains.ilos.Action
 import ru.megains.ilos.network.packet.client.data.PacketDataAction
 import ru.megains.ilos.player.Player
+import ru.megains.ilos.world.location.shop.Shops
 
 class NetHandler(player: Player) {
 
 
 
-    def processPacketAction(data: PacketDataAction): Unit = {
-        data.action match {
+    def processPacketAction(packet: PacketDataAction): Unit = {
+        packet.action match {
             case Action.CLICK =>
-                player.location.click(player,data.data(0),data.data(1))
+                player.location.click(player,packet.data(0),packet.data(1))
             case Action.ENTER =>
                 player.location.enterObject(player)
+            case Action.BUY_ITEM =>
+                Shops.getShop(0).buyItem(packet.data(0),packet.data(1),player)
+
             case _ =>
-                println("PacketAction " + data.action)
+                println("PacketAction " + packet.action)
         }
     }
 

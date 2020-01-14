@@ -12,7 +12,6 @@ libraryDependencies ++= Seq(
 
 
     "mysql" % "mysql-connector-java" % "5.1.41",
-    "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.2.2",
     "org.scalikejdbc" %% "scalikejdbc"       % "3.3.0",
     // "org.apache.logging.log4j" % "log4j-core" % "2.8.2",
     // "org.apache.logging.log4j" % "log4j-api" % "2.8.2",

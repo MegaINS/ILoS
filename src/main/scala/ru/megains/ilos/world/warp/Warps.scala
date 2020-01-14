@@ -56,6 +56,13 @@ object Warps {
                 warp11.id -> warp11,
                 warp12.id -> warp12
         )
+
+
+        val warp13 = Warp(12, "in Shop", 0, 2, 5, 13)
+        val warp14 = Warp(13, "in Antaris", 7, 0, 0, 12)
+
+        warps += warp13.id ->warp13
+        warps += warp14.id ->warp14
     }
 
 }

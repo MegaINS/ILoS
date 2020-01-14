@@ -1,7 +1,6 @@
 package ru.megains.ilos.player
 
 import com.corundumstudio.socketio.SocketIOClient
-import ru.megains.ilos.Action
 import ru.megains.ilos.inventory.PlayerInventory
 import ru.megains.ilos.network.packet.server._
 import ru.megains.ilos.utils.Logger
@@ -108,10 +107,8 @@ class Player(val id: Int, val name: String) extends Logger[Player] {
     }
 
     def sendData(): Unit ={
-        sendPacket(new PacketLocation(location))
-        sendPacket(new PacketPlayerUpdate(Action.SPAWN,this))
+        location.sendData(this)
         location.sendPlayerList(this)
-
     }
 
 }
