@@ -2,7 +2,12 @@ package ru.megains.ilos.database
 
 import anorm.SqlParser.get
 import anorm.{RowParser, ~}
+import ru.megains.ilos.GameClass
+import ru.megains.ilos.item.Item
 import ru.megains.ilos.player.Player
+import ru.megains.ilos.world.location.LocationType.LocationType
+import ru.megains.ilos.world.location._
+import ru.megains.ilos.world.warp.Warp
 
 object Parsers {
 
@@ -15,7 +20,60 @@ object Parsers {
         }
     }
 
-//    var loc_object : RowParser[(Int,String,String,Int)] = {
+    val item: RowParser[Item] = {
+        get[Int]("id") ~
+                get[String]("name") ~
+                get[String]("src") ~
+                get[Int]("level") ~
+                get[Int]("weight")map{
+            case id~name~src~level~weight => new Item(id,name,level,weight,src)
+        }
+    }
+
+
+    val location : RowParser[(Int,LocationType)] = {
+        get[Int]("id") ~
+                get[String]("type")map{
+            case id~typeName =>(id,LocationType.withName(typeName) )
+        }
+    }
+
+    val locationOpen: RowParser[LocationOpen] = {
+        get[Int]("id") ~
+                get[String]("name")~
+                get[String]("src")map{
+            case id~name~src =>new LocationOpen(id,name,src)
+        }
+    }
+    val locationHab: RowParser[LocationHab] = {
+        get[Int]("id") ~
+                get[String]("name")~
+                get[String]("area")map{
+            case id~name~area =>new LocationHab(id,name,area)
+        }
+    }
+
+    val locationMine: RowParser[LocationMine] = {
+        get[Int]("id") ~
+                get[String]("name")~
+                get[String]("gameClass")~
+                get[Int]("level")~
+                get[String]("mineType")map{
+            case id~name~gameClass~level~mineType =>new LocationMine(id,name,GameClass.withName(gameClass),level,MineType.withName(mineType))
+        }
+    }
+
+    val warp: RowParser[Warp] = {
+        get[Int]("id") ~
+                get[String]("name")~
+                get[Int]("locId")~
+                get[Int]("x")~
+                get[Int]("y")~
+                get[Int]("outId")map{
+            case id~name~locId~x~y~outId => Warp(id,name,locId,x,y,outId)
+        }
+    }
+    //    var loc_object : RowParser[(Int,String,String,Int)] = {
 //
 //                get[Int]("loc_id") ~
 //                get[String]("name") ~
@@ -38,20 +96,6 @@ object Parsers {
 //        }
 //    }
 
-//    val itemBase: RowParser[ItemBase] = {
-//        get[Int]("id") ~
-//                get[String]("name") ~
-//                get[String]("img") ~
-//                get[Int]("level") ~
-//                get[Int]("cost") ~
-//                get[Boolean]("weight") ~
-//                get[Boolean]("private")~
-//                get[String]("action")~
-//                get[String]("slot")~
-//                get[Boolean]("stack")map{
-//            case id~name~img~level~cost~weight~privat~action~slot~stack => new ItemBase(id,name,img,level,cost,weight,privat,ItemAction.withName(action),SlotType.withName(slot),stack )
-//        }
-//    }
 
 //    val itemUser: RowParser[ItemUser]={
 //        get[Int]("id")~

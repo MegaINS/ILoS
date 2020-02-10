@@ -28,7 +28,7 @@ class PlayerList(server: IloSServer) extends Logger[PlayerList] with Database {
                         log.info(s"Player offline")
                         players += value.id -> player
                        // val info = SQL(s"SELECT * FROM player_info WHERE id='${player.id}'").as(Parsers.playerInfo.single)
-                        Locations.getLocation(0).enter(player)
+                        Locations.getLocation(1).enter(player)
                     } else {
                         player = players(value.id)
                         player.client = client

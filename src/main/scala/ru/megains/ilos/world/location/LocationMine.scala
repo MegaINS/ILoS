@@ -7,12 +7,11 @@ import ru.megains.ilos.network.packet.server.{PacketChat, PacketLocUpdate}
 import ru.megains.ilos.player.Player
 import ru.megains.ilos.world.location.LocationType.LocationType
 import ru.megains.ilos.world.location.MineType.MineType
-import ru.megains.ilos.world.warp.Warp
 
 import scala.collection.mutable.ArrayBuffer
 import scala.util.Random
 
-class LocationMine(id: Int, name: String, gameClass: GameClass, level:Int, val mineType: MineType, warps: Array[Warp], resGens:Array[ResGen]) extends Location(id, name, warps) {
+class LocationMine(id: Int, name: String, gameClass: GameClass, level:Int, val mineType: MineType) extends Location(id, name) {
 
     override var locationType: LocationType = LocationType.MINE
 
@@ -20,7 +19,7 @@ class LocationMine(id: Int, name: String, gameClass: GameClass, level:Int, val m
     val width = 15
     val height = 15
     val lvl = 1
-
+    val resGens:Array[ResGen] = null
     val tileGrounds: Array[Int] = new Array(width * height)
     val resources: ArrayBuffer[Resource] = new ArrayBuffer[Resource]()
 
@@ -38,7 +37,7 @@ class LocationMine(id: Int, name: String, gameClass: GameClass, level:Int, val m
 
         warps.foreach(w => tileGrounds(w.x + w.y * height) = 0)
 
-        resGens.foreach(_.generate(this))
+       // resGens.foreach(_.generate(this))
 
 
 

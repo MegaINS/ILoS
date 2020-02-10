@@ -5,9 +5,9 @@ import ru.megains.ilos.network.packet.server.PacketShop
 import ru.megains.ilos.player.Player
 import ru.megains.ilos.world.location.LocationType.LocationType
 import ru.megains.ilos.world.location.{Location, LocationType}
-import ru.megains.ilos.world.warp.Warp
 
-class LocationShop(id: Int, name: String, warp: Warp, val groups: Array[Group]) extends Location(id, name, Array(warp)) {
+
+class LocationShop(id: Int, name: String, val groups: Array[Group]) extends Location(id, name) {
 
     override var locationType: LocationType = LocationType.SHOP
 
@@ -23,8 +23,7 @@ class LocationShop(id: Int, name: String, warp: Warp, val groups: Array[Group]) 
     }
 
     override def enterObject(player: Player): Unit = {
-        warp.in(player)
+        warps.last.in(player)
     }
-
 
 }

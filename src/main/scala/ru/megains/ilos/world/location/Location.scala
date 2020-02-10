@@ -3,15 +3,16 @@ package ru.megains.ilos.world.location
 import ru.megains.ilos.network.packet.server._
 import ru.megains.ilos.player.Player
 import ru.megains.ilos.world.location.LocationType.LocationType
-import ru.megains.ilos.world.warp.Warp
+import ru.megains.ilos.world.warp.{Warp, Warps}
 import ru.megains.ilos.{Action, Timer}
 
 import scala.collection.mutable.ArrayBuffer
 
-abstract class Location(val id: Int, val name: String, val warps: Array[Warp]) {
+abstract class Location(val id: Int, val name: String) {
 
 
     var locationType: LocationType
+    val warps: Array[Warp] = Warps.getWarpsWithLocId(id)
     val players: ArrayBuffer[Player] = new ArrayBuffer[Player]()
 
 

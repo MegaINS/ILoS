@@ -3,7 +3,7 @@ package ru.megains.ilos.world.warp
 import ru.megains.ilos.player.Player
 import ru.megains.ilos.world.location.{Location, Locations}
 
-case  class Warp(id:Int, name:String,locId:Int, x:Int, y:Int, outId:Int){
+case class Warp(id:Int, name:String,locId:Int, x:Int, y:Int, outId:Int){
 
 
 

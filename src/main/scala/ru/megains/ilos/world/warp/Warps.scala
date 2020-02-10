@@ -1,10 +1,10 @@
 package ru.megains.ilos.world.warp
 
-import scala.collection.mutable
+import ru.megains.ilos.database.DBWarp
 
 object Warps {
 
-    val warps = new mutable.HashMap[Int, Warp]()
+    val warps: Map[Int, Warp] = DBWarp.loadWarps()
 
     def getWarp(id: Int): Warp = {
         warps(id)
@@ -17,8 +17,8 @@ object Warps {
     def load(): Unit = {
 
 
-        val warp1 = Warp(0, "in Hab mine", 0, 3, 1, 1)
-        val warp2 = Warp(1, "in Antiria", 1, 2, 1, 0)
+//        val warp1 = Warp(0, "in Hab mine", 0, 3, 1, 1)
+//        val warp2 = Warp(1, "in Antiria", 1, 2, 1, 0)
 
         val warp7 = Warp(6, "in Hab meadow", 0, 11, 7, 5)
         val warp6 = Warp(5, "in Antiria", 5, 2, 1, 6)
@@ -39,30 +39,9 @@ object Warps {
         val warp11 = Warp(10, "in Meadow", 6, 3, 2, 11)
         val warp12 = Warp(11, "in Hab", 4, 1, 1, 10)
 
-
-        warps += (
-                warp1.id -> warp1,
-                warp2.id -> warp2,
-                warp3.id -> warp3,
-                warp4.id -> warp4,
-
-                warp5.id -> warp5,
-                warp6.id -> warp6,
-                warp7.id -> warp7,
-                warp8.id -> warp8,
-
-                warp9.id -> warp9,
-                warp10.id -> warp10,
-                warp11.id -> warp11,
-                warp12.id -> warp12
-        )
-
-
         val warp13 = Warp(12, "in Shop", 0, 2, 5, 13)
         val warp14 = Warp(13, "in Antaris", 7, 0, 0, 12)
 
-        warps += warp13.id ->warp13
-        warps += warp14.id ->warp14
     }
 
 }

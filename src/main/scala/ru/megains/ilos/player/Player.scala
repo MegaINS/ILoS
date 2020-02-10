@@ -14,7 +14,7 @@ class Player(val id: Int, val name: String) extends Logger[Player] {
 
     var client: SocketIOClient = _
 
-    var x =4
+    var x = 4
     var y = 4
 
 

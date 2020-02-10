@@ -3,9 +3,8 @@ package ru.megains.ilos.world.location
 import ru.megains.ilos.world.location.LocationType.LocationType
 import ru.megains.ilos.world.warp.Warp
 
-class LocationOpen(id:Int,name:String,warps: Array[Warp] ) extends Location(id,name,warps) {
+class LocationOpen(id:Int,name:String, val src:String) extends Location(id,name) {
 
-    var src:String = _
     var locationType:LocationType = LocationType.OPEN
     var height:Int = _
     var width:Int = _
