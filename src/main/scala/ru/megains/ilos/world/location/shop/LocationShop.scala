@@ -7,9 +7,13 @@ import ru.megains.ilos.world.location.LocationType.LocationType
 import ru.megains.ilos.world.location.{Location, LocationType}
 
 
-class LocationShop(id: Int, name: String, val groups: Array[Group]) extends Location(id, name) {
+class LocationShop(id: Int, name: String) extends Location(id, name) {
+
 
     override var locationType: LocationType = LocationType.SHOP
+
+    val groups: Array[Group] = Array.empty
+
 
     override def correctCoordinate(x: Int, y: Int): Boolean = false
 

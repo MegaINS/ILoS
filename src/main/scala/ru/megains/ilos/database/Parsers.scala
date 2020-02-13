@@ -7,10 +7,25 @@ import ru.megains.ilos.item.Item
 import ru.megains.ilos.player.Player
 import ru.megains.ilos.world.location.LocationType.LocationType
 import ru.megains.ilos.world.location._
+import ru.megains.ilos.world.location.shop.LocationShop
 import ru.megains.ilos.world.warp.Warp
 
 object Parsers {
 
+
+
+    val resourceId: RowParser[Int] = {
+        get[Int]("resourceid")
+    }
+
+    val resource: RowParser[ResGen]  = {
+        get[Int]("itemid")~
+                get[Int]("min")~
+                get[Int]("max")~
+                get[Float]("chance") map{
+            case itemid~min~max~chance => new ResGen(itemid,min,max,chance)
+        }
+    }
 
 
     val player: RowParser[Player] = {
@@ -56,10 +71,17 @@ object Parsers {
     val locationMine: RowParser[LocationMine] = {
         get[Int]("id") ~
                 get[String]("name")~
-                get[String]("gameClass")~
+                get[String]("class")~
                 get[Int]("level")~
-                get[String]("mineType")map{
+                get[String]("type")map{
             case id~name~gameClass~level~mineType =>new LocationMine(id,name,GameClass.withName(gameClass),level,MineType.withName(mineType))
+        }
+    }
+
+    val locationShop: RowParser[LocationShop] = {
+        get[Int]("id") ~
+                get[String]("name")map{
+            case id~name =>new LocationShop(id,name)
         }
     }
 

@@ -31,14 +31,68 @@ VALUES ('Осина','materials-2',1,0,25);
 
 
 
-INSERT INTO location (name,type) VALUES ('antiria','OPEN');
+INSERT INTO location (name, type) VALUES ('antiria','OPEN');            #1
+INSERT INTO location (name, type) VALUES ('hab mine','HAB');            #2
+INSERT INTO location (name, type) VALUES ('hab forest','HAB');          #3
+INSERT INTO location (name, type) VALUES ('hab meadow','HAB');          #4
+INSERT INTO location (name, type) VALUES ('mine_1','MINE');             #5
+INSERT INTO location (name, type) VALUES ('forest_1','MINE');           #6
+INSERT INTO location (name, type) VALUES ('meadow_1','MINE');           #7
+INSERT INTO location (name, type) VALUES ('Первый магазин','SHOP');     #8
+
 INSERT INTO location_open (locationid, src) VALUES (1,'antiria');
 
-INSERT INTO location (name,type) VALUES ('hab mine','HAB');
 INSERT INTO location_hab (locationid, area) VALUES (2,'mine');
+INSERT INTO location_hab (locationid, area) VALUES (3,'forest');
+INSERT INTO location_hab (locationid, area) VALUES (4,'meadow');
 
-INSERT INTO warp (name, locId, x, y, outId) VALUES ('in Hab mine', 1, 3, 1, 2);
-INSERT INTO warp (name, locId, x, y, outId) VALUES ('in Antiria', 2, 2, 1, 1);
+INSERT INTO location_mine (locationid,class,level, type) VALUES (5,'CLASS_0',1,'MINE');
+INSERT INTO location_mine (locationid,class,level, type) VALUES (6,'CLASS_0',1,'FOREST');
+INSERT INTO location_mine (locationid,class,level, type) VALUES (7,'CLASS_0',1,'MEADOW');
+
+INSERT INTO location_shop (locationid) VALUES (8);
+
+INSERT INTO warp (name, locId, x, y, outId) VALUES ('in Hab mine', 1, 3, 1, 2);      #1
+INSERT INTO warp (name, locId, x, y, outId) VALUES ('in Antiria', 2, 2, 1, 1);       #2
+
+INSERT INTO warp (name, locId, x, y, outId) VALUES ('in Hab meadow', 1, 11, 7, 4);   #3
+INSERT INTO warp (name, locId, x, y, outId) VALUES ('in Antiria', 3, 2, 1, 3);       #4
+
+INSERT INTO warp (name, locId, x, y, outId) VALUES ('in Hab forest', 1, 1, 7, 6);    #5
+INSERT INTO warp (name, locId, x, y, outId) VALUES ('in Antiria', 4, 2, 1, 5);       #6
+
+INSERT INTO warp (name, locId, x, y, outId) VALUES ('in Mine', 2, 3, 2, 8);         #7
+INSERT INTO warp (name, locId, x, y, outId) VALUES ('in Hab', 5, 1, 1, 7);          #8
+
+INSERT INTO warp (name, locId, x, y, outId) VALUES ('in Forest', 3, 3, 2, 10);      #9
+INSERT INTO warp (name, locId, x, y, outId) VALUES ('in Hab', 6, 1, 1, 9);          #10
+
+INSERT INTO warp (name, locId, x, y, outId) VALUES ('in Meadow', 4, 3, 2, 12);      #11
+INSERT INTO warp (name, locId, x, y, outId) VALUES ('in Hab', 7, 1, 1, 11);         #12
+
+INSERT INTO warp (name, locId, x, y, outId) VALUES ('in Shop', 1, 2, 5, 14);      #13
+INSERT INTO warp (name, locId, x, y, outId) VALUES ('in Antaris', 8, 0, 0, 13);         #14
+
+
+INSERT INTO resource (itemid, min, max, chance) VALUES (1, 1, 5, 10);     #1
+INSERT INTO resource (itemid, min, max, chance) VALUES (2, 1, 3, 5);      #2
+INSERT INTO resource (itemid, min, max, chance) VALUES (3, 1, 2, 1);      #3
+INSERT INTO resource (itemid, min, max, chance) VALUES (4, 1, 5, 10);     #4
+INSERT INTO resource (itemid, min, max, chance) VALUES (5, 1, 3, 5);      #5
+INSERT INTO resource (itemid, min, max, chance) VALUES (6, 1, 2, 1);      #6
+INSERT INTO resource (itemid, min, max, chance) VALUES (7, 1, 5, 10);     #7
+INSERT INTO resource (itemid, min, max, chance) VALUES (8, 1, 3, 5);      #8
+INSERT INTO resource (itemid, min, max, chance) VALUES (9, 1, 2, 1);      #9
+
+INSERT INTO resource_location (locationid, resourceid) VALUES (5, 1);     #1
+INSERT INTO resource_location (locationid, resourceid) VALUES (5, 2);     #2
+INSERT INTO resource_location (locationid, resourceid) VALUES (5, 3);     #3
+INSERT INTO resource_location (locationid, resourceid) VALUES (7, 4);     #4
+INSERT INTO resource_location (locationid, resourceid) VALUES (7, 5);     #5
+INSERT INTO resource_location (locationid, resourceid) VALUES (7, 6);     #6
+INSERT INTO resource_location (locationid, resourceid) VALUES (6, 7);     #7
+INSERT INTO resource_location (locationid, resourceid) VALUES (6, 8);     #8
+INSERT INTO resource_location (locationid, resourceid) VALUES (6, 9);     #9
 
 # INSERT INTO player_info (id, location)  VALUES (1, 1);
 # INSERT INTO player_info (id, location)  VALUES (2, 1);

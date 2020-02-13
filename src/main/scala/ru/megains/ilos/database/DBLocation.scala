@@ -15,8 +15,8 @@ object DBLocation extends Database {
                     SQL(s"SELECT * FROM location l JOIN location_hab l_o ON l_o.locationid = l.id  WHERE l.id='${locInf._1}'").as(Parsers.locationHab.single)
                 case LocationType.MINE =>
                     SQL(s"SELECT * FROM location l JOIN location_mine l_o ON l_o.locationid = l.id  WHERE l.id='${locInf._1}'").as(Parsers.locationMine.single)
-               // case ru.megains.ilos.world.location.LocationType.SHOP =>
-                //    SQL(s"SELECT * FROM location WHERE id='$id'").as(Parsers.location.single)
+                case LocationType.SHOP =>
+                    SQL(s"SELECT * FROM location l JOIN location_shop l_o ON l_o.locationid = l.id  WHERE l.id='${locInf._1}'").as(Parsers.locationShop.single)
             }
 
         }

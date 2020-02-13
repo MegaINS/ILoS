@@ -19,9 +19,11 @@ class LocationMine(id: Int, name: String, gameClass: GameClass, level:Int, val m
     val width = 15
     val height = 15
     val lvl = 1
-    val resGens:Array[ResGen] = null
+    val resGens:Array[ResGen] = ResGens.getResGensWithLocId(id)
     val tileGrounds: Array[Int] = new Array(width * height)
     val resources: ArrayBuffer[Resource] = new ArrayBuffer[Resource]()
+
+    createMine()
 
     override def correctCoordinate(x: Int, y: Int): Boolean = {
         x >= 0 && x < width && y >= 0 && y < height
@@ -37,7 +39,7 @@ class LocationMine(id: Int, name: String, gameClass: GameClass, level:Int, val m
 
         warps.foreach(w => tileGrounds(w.x + w.y * height) = 0)
 
-       // resGens.foreach(_.generate(this))
+        resGens.foreach(_.generate(this))
 
 
 

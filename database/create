@@ -48,7 +48,18 @@ CREATE TABLE location_hab (
   FOREIGN KEY (locationid) REFERENCES location (id) ON DELETE CASCADE
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
+CREATE TABLE location_mine (
+  locationid INT NOT NULL,
+  class VARCHAR(255) NOT NULL,
+  level INT NOT NULL,
+  type VARCHAR(255) NOT NULL,
+  FOREIGN KEY (locationid) REFERENCES location (id) ON DELETE CASCADE
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
+CREATE TABLE location_shop (
+  locationid INT NOT NULL,
+  FOREIGN KEY (locationid) REFERENCES location (id) ON DELETE CASCADE
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 CREATE TABLE warp (
   id INT NOT NULL AUTO_INCREMENT,
@@ -58,11 +69,30 @@ CREATE TABLE warp (
   y INT NOT NULL,
   outId INT NOT NULL,
   PRIMARY KEY(id),
-  FOREIGN KEY (locId) REFERENCES location (id) ON DELETE CASCADE,
-  FOREIGN KEY (outId) REFERENCES location (id) ON DELETE CASCADE
+  FOREIGN KEY (locId) REFERENCES location (id) ON DELETE CASCADE
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
-# 
+
+CREATE TABLE resource (
+    id INT NOT NULL AUTO_INCREMENT,
+    itemid INT(255) NOT NULL,
+    min INT(255) NOT NULL,
+    max INT(255) NOT NULL,
+    chance FLOAT NOT NULL,
+    PRIMARY KEY(id),
+    FOREIGN KEY (itemid) REFERENCES item (id) ON DELETE CASCADE
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+CREATE TABLE resource_location (
+    locationid INT(255) NOT NULL,
+    resourceid INT(255) NOT NULL,
+    UNIQUE KEY resource_location(resourceid,locationid),
+    FOREIGN KEY (resourceid) REFERENCES resource (id) ON DELETE CASCADE,
+    FOREIGN KEY (locationid) REFERENCES location (id) ON DELETE CASCADE
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
+#
+
+
 # CREATE TABLE player_info (
 #   id INT NOT NULL AUTO_INCREMENT,
 #   location INT NOT NULL DEFAULT 1,

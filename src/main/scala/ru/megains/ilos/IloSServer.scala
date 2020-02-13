@@ -18,9 +18,6 @@ class IloSServer(config:Configuration) extends Logger[IloSServer]{
     def start(): Unit = {
 
         log.info("Start IloSServer")
-        log.info("Bootstrap init")
-        Bootstrap.init()
-
 
         log.info("Start GameLogicHandler")
         gameLogicHandler.start()

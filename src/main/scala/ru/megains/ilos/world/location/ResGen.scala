@@ -1,10 +1,12 @@
 package ru.megains.ilos.world.location
 
-import ru.megains.ilos.item.Item
+import ru.megains.ilos.item.{Item, Items}
 
 import scala.util.Random
 
-class ResGen(item: Item, min:Int, max:Int,chance:Float) {
+class ResGen(itemId:Int, min:Int, max:Int,chance:Float) {
+
+    val item: Item = Items.getItem(itemId)
 
     def generate(loc: LocationMine): Unit ={
 
