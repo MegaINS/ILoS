@@ -94,6 +94,21 @@ INSERT INTO resource_location (locationid, resourceid) VALUES (6, 7);     #7
 INSERT INTO resource_location (locationid, resourceid) VALUES (6, 8);     #8
 INSERT INTO resource_location (locationid, resourceid) VALUES (6, 9);     #9
 
+
+INSERT INTO shop_group (shopid, name, src) VALUES (1,'Книги','books');           #1
+INSERT INTO shop_group (shopid, name, src) VALUES (1,'Инструменты','tools');     #2
+
+INSERT INTO shop_type (groupid, name, src) VALUES (1,'Книги','book');            #1
+INSERT INTO shop_type (groupid, name, src) VALUES (2,'Инструмент добычи','craft_forging');     #2
+INSERT INTO shop_type (groupid, name, src) VALUES (2,'"Инструмент создания','mine');     #3
+
+
+INSERT INTO shop_item (typeid, itemid, amount) VALUES (1,1,10);
+INSERT INTO shop_item (typeid, itemid, amount) VALUES (2,2,20);
+INSERT INTO shop_item (typeid, itemid, amount) VALUES (3,1,5);
+INSERT INTO shop_item (typeid, itemid, amount) VALUES (3,2,15);
+
+
 # INSERT INTO player_info (id, location)  VALUES (1, 1);
 # INSERT INTO player_info (id, location)  VALUES (2, 1);
 # INSERT INTO player_info (id, location)  VALUES (3, 1);

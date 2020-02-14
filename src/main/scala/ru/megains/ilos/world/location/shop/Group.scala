@@ -1,5 +1,8 @@
 package ru.megains.ilos.world.location.shop
 
-class Group(val name: String,val scr:String,val  types:Array[Type]) {
+import ru.megains.ilos.database.DBShop
 
+class Group(id:Int,val name: String, val src:String) {
+
+    val  types:List[Type] = DBShop.loadGroupTypes(id)
 }

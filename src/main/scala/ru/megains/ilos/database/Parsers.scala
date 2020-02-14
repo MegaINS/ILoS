@@ -3,15 +3,39 @@ package ru.megains.ilos.database
 import anorm.SqlParser.get
 import anorm.{RowParser, ~}
 import ru.megains.ilos.GameClass
-import ru.megains.ilos.item.Item
+import ru.megains.ilos.item.{Item, ItemStack}
 import ru.megains.ilos.player.Player
 import ru.megains.ilos.world.location.LocationType.LocationType
 import ru.megains.ilos.world.location._
-import ru.megains.ilos.world.location.shop.LocationShop
+import ru.megains.ilos.world.location.shop.{Group, LocationShop, Type}
 import ru.megains.ilos.world.warp.Warp
 
 object Parsers {
 
+
+    val shopGroup : RowParser[Group] = {
+        get[Int]("id")~
+                get[String]("name")~
+                get[String]("src")map{
+            case id~name~src => new Group(id,name,src)
+        }
+    }
+
+    val groupType: RowParser[Type] = {
+        get[Int]("id")~
+                get[String]("name")~
+                get[String]("src")map{
+            case id~name~src => new Type(id,name,src)
+        }
+    }
+
+    val shopItem: RowParser[ItemStack]  = {
+        get[Int]("id")~
+                get[Int]("itemid")~
+                get[Int]("amount")map{
+            case id~itemId~amount => new ItemStack(id,itemId,amount)
+        }
+    }
 
 
     val resourceId: RowParser[Int] = {
@@ -80,8 +104,9 @@ object Parsers {
 
     val locationShop: RowParser[LocationShop] = {
         get[Int]("id") ~
+                get[Int]("shopid") ~
                 get[String]("name")map{
-            case id~name =>new LocationShop(id,name)
+            case id~shopId~name =>new LocationShop(id,shopId,name)
         }
     }
 

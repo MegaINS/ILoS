@@ -11,6 +11,7 @@ object Locations {
 
     def getLocation(id:Int): Location ={
         locations.getOrElseUpdate(id,DBLocation.loadLocation(id))
+
     }
 
 }

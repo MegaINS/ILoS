@@ -8,6 +8,6 @@ class PacketShop(shop:LocationShop) extends Packet {
 
     override val name: String = "shopLoad"
     override val data: AnyRef = {
-        new PShop(shop.name,shop.groups.map(g => new PGroup(g.name,g.scr,g.types.map(t => new PType(t.name,t.scr,t.items.map(i => new PItem(i.item.id,i.item.name,i.amount,i.item.level ,i.item.weight,i.item.src)))))))
+        new PShop(shop.name,shop.groups.map(g => new PGroup(g.name,g.src,g.types.map(t => new PType(t.name,t.src,t.items.map(i => new PItem(i.item.id,i.item.name,i.amount,i.item.level ,i.item.weight,i.item.src)).toArray)).toArray)).toArray)
     }
 }
