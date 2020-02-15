@@ -1,12 +1,20 @@
 package ru.megains.ilos.network
 
-import ru.megains.ilos.Action
-import ru.megains.ilos.network.packet.client.data.PacketDataAction
+import ru.megains.ilos.{Action, IloSServer}
+import ru.megains.ilos.network.packet.client.data.{ChatObject, PacketDataAction}
+import ru.megains.ilos.network.packet.server.PacketChat
 import ru.megains.ilos.player.Player
 import ru.megains.ilos.world.location.shop.LocationShop
 
-class NetHandler(player: Player) {
+class NetHandler(server:IloSServer,player: Player) {
 
+
+    def processPacketChatEvent(data: ChatObject): Unit = {
+        data.setUserName(player.name)
+        println(data.toString)
+        val packet = new PacketChat(data)
+        server.playerList.players.values.foreach(_.sendPacket(packet))
+    }
 
 
     def processPacketAction(packet: PacketDataAction): Unit = {

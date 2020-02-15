@@ -20,7 +20,7 @@ class PacketConnect(server:IloSServer) extends ConnectListener{
 
                 val player = server.playerList.initializeConnectionToPlayer(session,client)
 
-                val netHandler = new NetHandler(player)
+                val netHandler = new NetHandler(server,player)
                 player match {
                     case _:Player =>
 
