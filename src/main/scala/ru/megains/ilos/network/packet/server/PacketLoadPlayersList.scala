@@ -10,6 +10,6 @@ class PacketLoadPlayersList(players:ArrayBuffer[Player]) extends Packet {
 
     override val name: String = "loadPlayersList"
     override val data: AnyRef = {
-        new PPlayerList( players.map(p => new PPlayer(p.id,p.name)).toArray)
+        new PPlayerList( players.map(p => new PPlayer(p.id,p.name,p.level)).toArray)
     }
 }

@@ -7,6 +7,6 @@ class PacketRemovePlayer(player:Player) extends Packet {
 
     override val name: String = "removePlayer"
     override val data: AnyRef = {
-        new PPlayer(player.id,player.name)
+        new PPlayer(player.id,player.name,player.level)
     }
 }
