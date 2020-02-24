@@ -12,8 +12,8 @@ case class Warp(id:Int, name:String,locId:Int, x:Int, y:Int, outId:Int){
 
 
     def out(player: Player): Unit = {
-        player.x = x
-        player.y = y
+        player.posX = x
+        player.posY = y
         loc.enter(player)
     }
 

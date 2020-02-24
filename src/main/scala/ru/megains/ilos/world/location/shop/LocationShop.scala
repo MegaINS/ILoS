@@ -8,7 +8,7 @@ import ru.megains.ilos.world.location.LocationType.LocationType
 import ru.megains.ilos.world.location.{Location, LocationType}
 
 
-class LocationShop(id: Int, shopId: Int, name: String) extends Location(id, name) {
+class LocationShop(id: Int, shopId: Int, name: String, width: Int, height: Int) extends Location(id,name, width, height) {
 
 
     override var locationType: LocationType = LocationType.SHOP

@@ -11,28 +11,24 @@ class Player(val id: Int, val name: String) extends Logger[Player] {
 
 
 
-
     var client: SocketIOClient = _
 
-    var x = 4
-    var y = 4
-
-
-
-    var level: Int = 10
-
-    var health:Int = 1
-    var healthMax:Int = 50
-    var energy:Int = 1
-    var energyMax:Int = 100
-    var workDamage = 10
-
-
-    var power = 11
-    var intellect = 22
-    var concentration = 33
-    var stamina = 44
-    var money:Float = 56.5f
+    var posX = 0
+    var posY = 0
+    var level: Int = 0
+    var health:Int = 0
+    var healthMax:Int = 0
+    var energy:Int =0
+    var energyMax:Int = 0
+    var fightMaxDamage:Int = 0
+    var fightMinDamage:Int = 0
+    var workMaxDamage:Int = 0
+    var workMinDamage:Int = 0
+    var power:Int = 0
+    var intellect:Int = 0
+    var concentration:Int = 0
+    var stamina:Int = 0
+    var money:Float = 0f
 
     var location:Location = _
 

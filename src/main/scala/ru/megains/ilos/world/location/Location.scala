@@ -8,7 +8,7 @@ import ru.megains.ilos.{Action, Timer}
 
 import scala.collection.mutable.ArrayBuffer
 
-abstract class Location(val id: Int, val name: String) {
+abstract class Location(val id: Int, val name: String,  val width: Int, val height: Int) {
 
 
     var locationType: LocationType
@@ -17,7 +17,7 @@ abstract class Location(val id: Int, val name: String) {
 
 
     def getWarp(player: Player): Option[Warp] = {
-        warps.find(w => w.x == player.x && w.y == player.y)
+        warps.find(w => w.x == player.posX && w.y == player.posY)
     }
 
 
@@ -61,7 +61,7 @@ abstract class Location(val id: Int, val name: String) {
         })
     }
 
-    def isCorrectDis(player: Player, x: Int, y: Int): Boolean = Math.abs(player.x - x)+ Math.abs(player.y - y) == 1
+    def isCorrectDis(player: Player, x: Int, y: Int): Boolean = {Math.abs(player.posX - x) == 0 || Math.abs(player.posX - x) == 1 &&  Math.abs(player.posY - y) == 0 || Math.abs(player.posY - y) == 1}
 
 
     def click(player: Player, x: Int, y: Int): Unit = {
@@ -74,8 +74,8 @@ abstract class Location(val id: Int, val name: String) {
     def correctCoordinate(x: Int, y: Int): Boolean
 
     def move(player: Player, x: Int, y: Int): Unit = {
-        player.x = x
-        player.y = y
+        player.posX = x
+        player.posY = y
         player.sendPacket(new PacketPlayerUpdate(Action.MOVE, player))
         val packet = new PacketEnemyUpdate(Action.MOVE, player)
         players.filter(_ != player).foreach(_.sendPacket(packet))

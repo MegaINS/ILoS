@@ -13,6 +13,51 @@ import ru.megains.ilos.world.warp.Warp
 object Parsers {
 
 
+    val player : RowParser[Player] = {
+        get[Int]("id")~
+        get[String]("name")~
+        get[Int]("level")~
+        get[Int]("location")~
+        get[Int]("pos_x")~
+        get[Int]("pos_y")~
+                get[Int]("health")~
+                get[Int]("healthMax")~
+                get[Int]("energy")~
+                get[Int]("energyMax")~
+                get[Int]("fightMinDamage")~
+                get[Int]("fightMaxDamage")~
+                get[Int]("workMinDamage")~
+                get[Int]("workMaxDamage")~
+                get[Int]("power")~
+                get[Int]("intellect")~
+                get[Int]("concentration")~
+                get[Int]("stamina")~
+        get[Float]("money")map{
+            case id~name~level~location~posX~posY~health~healthMax~energy~energyMax~fightMinDamage~fightMaxDamage~workMinDamage~workMaxDamage~power~intellect~concentration~stamina~money =>{
+                val player =  new Player(id,name)
+                player.posX = posX
+                player.posY = posY
+                player.money = money
+                player.level = level
+                player.location =  Locations.getLocation(location)
+                player.health = health
+                player.healthMax = healthMax
+                player.energy =energy
+                player.energyMax = energyMax
+                player.fightMinDamage = fightMinDamage
+                player.fightMaxDamage = fightMaxDamage
+                player.workMinDamage = workMinDamage
+                player.workMaxDamage = workMaxDamage
+                player.power = power
+                player.intellect = intellect
+                player.concentration = concentration
+                player.stamina = stamina
+                player
+            }
+        }
+    }
+
+
     val shopGroup : RowParser[Group] = {
         get[Int]("id")~
                 get[String]("name")~
@@ -52,13 +97,6 @@ object Parsers {
     }
 
 
-    val player: RowParser[Player] = {
-        get[Int]("id") ~
-                get[String]("name") map{
-            case id~name =>new Player(id,name)
-        }
-    }
-
     val item: RowParser[Item] = {
         get[Int]("id") ~
                 get[String]("name") ~
@@ -76,19 +114,22 @@ object Parsers {
             case id~typeName =>(id,LocationType.withName(typeName) )
         }
     }
-
     val locationOpen: RowParser[LocationOpen] = {
         get[Int]("id") ~
                 get[String]("name")~
-                get[String]("src")map{
-            case id~name~src =>new LocationOpen(id,name,src)
+                get[String]("src")~
+                get[Int]("width")~
+                get[Int]("height")map{
+            case id~name~src~width~height =>new LocationOpen(id,name,src,width,height)
         }
     }
     val locationHab: RowParser[LocationHab] = {
         get[Int]("id") ~
                 get[String]("name")~
-                get[String]("area")map{
-            case id~name~area =>new LocationHab(id,name,area)
+                get[String]("area")~
+                get[Int]("width")~
+                get[Int]("height")map{
+            case id~name~area~width~height =>new LocationHab(id,name,area,width,height)
         }
     }
 
@@ -97,16 +138,20 @@ object Parsers {
                 get[String]("name")~
                 get[String]("class")~
                 get[Int]("level")~
-                get[String]("type")map{
-            case id~name~gameClass~level~mineType =>new LocationMine(id,name,GameClass.withName(gameClass),level,MineType.withName(mineType))
+                get[String]("type")~
+                get[Int]("width")~
+                get[Int]("height")map{
+            case id~name~gameClass~level~mineType~width~height =>new LocationMine(id,name,GameClass.withName(gameClass),level,MineType.withName(mineType),width,height)
         }
     }
 
     val locationShop: RowParser[LocationShop] = {
         get[Int]("id") ~
                 get[Int]("shopid") ~
-                get[String]("name")map{
-            case id~shopId~name =>new LocationShop(id,shopId,name)
+                get[String]("name")~
+                get[Int]("width")~
+                get[Int]("height")map{
+            case id~shopId~name~width~height =>new LocationShop(id,shopId,name,width,height)
         }
     }
 

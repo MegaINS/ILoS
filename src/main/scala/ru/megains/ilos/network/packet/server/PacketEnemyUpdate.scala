@@ -9,7 +9,7 @@ class PacketEnemyUpdate(action:Action, player:Player) extends Packet{
     override val name: String = "enemyUpdate"
     override val data: AnyRef = {
 
-        new PEnemyUpdate(action,player.id,player.x,player.y)
+        new PEnemyUpdate(action,player.id,player.posX,player.posY)
     }
 }
 

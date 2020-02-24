@@ -9,6 +9,6 @@ class PacketPlayerUpdate(action:Action,player:Player) extends Packet{
     override val name: String = "playerUpdate"
     override val data: AnyRef = {
 
-        new PPlayerSpawn(action,player.x,player.y)
+        new PPlayerSpawn(action,player.posX,player.posY)
     }
 }

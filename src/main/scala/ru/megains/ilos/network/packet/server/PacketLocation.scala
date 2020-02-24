@@ -16,6 +16,8 @@ class PacketLocation(location:Location) extends Packet {
                     location.name,
                     location.asInstanceOf[LocationOpen].src,
                     location.locationType,
+                    location.asInstanceOf[LocationOpen].width,
+                    location.asInstanceOf[LocationOpen].height,
                     location.warps.map(w => new PWarp(w.name,w.x,w.y))
                 )
             case LocationType.HAB =>

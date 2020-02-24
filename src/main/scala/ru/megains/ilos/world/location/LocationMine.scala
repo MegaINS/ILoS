@@ -11,13 +11,12 @@ import ru.megains.ilos.world.location.MineType.MineType
 import scala.collection.mutable.ArrayBuffer
 import scala.util.Random
 
-class LocationMine(id: Int, name: String, gameClass: GameClass, level:Int, val mineType: MineType) extends Location(id, name) {
+class LocationMine(id: Int, name: String, gameClass: GameClass, level:Int, val mineType: MineType,width:Int,height:Int) extends Location(id, name,width,height) {
 
     override var locationType: LocationType = LocationType.MINE
 
 
-    val width = 15
-    val height = 15
+
     val lvl = 1
     val resGens:Array[ResGen] = ResGens.getResGensWithLocId(id)
     val tileGrounds: Array[Int] = new Array(width * height)
@@ -58,8 +57,8 @@ class LocationMine(id: Int, name: String, gameClass: GameClass, level:Int, val m
 
 
         def excavate(player: Player, x: Int, y: Int): Unit ={
-            tileGrounds(x + y * height) -= player.workDamage
-            player.sendPacket(new PacketChat(new ChatObject("Location", s"На клетке х:$x у:$y удалено ${player.workDamage} породы, осталось ${tileGrounds(x + y * height)}")))
+            tileGrounds(x + y * height) -= player.workMinDamage
+            player.sendPacket(new PacketChat(new ChatObject("Location", s"На клетке х:$x у:$y удалено ${player.workMinDamage} породы, осталось ${tileGrounds(x + y * height)}")))
             if (tileGrounds(x + y * height) <= 0) {
                 tileGrounds(x + y * height) = 0
                 resources.find(r => r.x == x && r.y == y) match {

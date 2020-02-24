@@ -2,7 +2,7 @@ DROP DATABASE IF EXISTS ilos;
 CREATE DATABASE `ilos`;
 USE `ilos`;
 
-CREATE TABLE player_auth (
+CREATE TABLE auth (
   id INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL,
@@ -12,6 +12,66 @@ CREATE TABLE player_auth (
   UNIQUE KEY(name),
   UNIQUE KEY (email)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+CREATE TABLE player (
+    player_id INT NOT NULL,
+    level INT NOT NULL DEFAULT 1,
+    location INT NOT NULL DEFAULT 1,
+    pos_x INT NOT NULL DEFAULT 0,
+    pos_y INT NOT NULL DEFAULT 0,
+    money FLOAT NOT NULL DEFAULT 10,
+    health INT NOT NULL,
+    healthMax INT NOT NULL,
+    energy INT NOT NULL,
+    energyMax INT NOT NULL,
+    fightMinDamage INT NOT NULL,
+    fightMaxDamage INT NOT NULL,
+    workMinDamage INT NOT NULL,
+    workMaxDamage INT NOT NULL,
+    power INT NOT NULL,
+    intellect INT NOT NULL,
+    concentration INT NOT NULL,
+    stamina INT NOT NULL,
+    PRIMARY KEY(player_id),
+    FOREIGN KEY (player_id) REFERENCES auth(id) ON DELETE CASCADE
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+
+# CREATE TABLE player_parameters (
+#     player_id INT NOT NULL,
+#     health INT NOT NULL,
+#     healthMax INT NOT NULL,
+#     energy INT NOT NULL,
+#     energyMax INT NOT NULL,
+#     fightMinDamage INT NOT NULL,
+#     fightMaxDamage INT NOT NULL,
+#     workMinDamage INT NOT NULL,
+#     workMaxDamage INT NOT NULL,
+#     power INT NOT NULL,
+#     intellect INT NOT NULL,
+#     concentration INT NOT NULL,
+#     stamina INT NOT NULL,
+#     PRIMARY KEY(player_id),
+#     FOREIGN KEY (player_id) REFERENCES auth(id) ON DELETE CASCADE
+# ) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+
+# CREATE TABLE parameter (
+#     id INT NOT NULL AUTO_INCREMENT,
+#     name VARCHAR(255) NOT NULL,
+#     PRIMARY KEY(id)
+# ) ENGINE=INNODB DEFAULT CHARSET=utf8;
+#
+#
+# CREATE TABLE player_parameter (
+#     player_id INT NOT NULL,
+#     parameter_id INT NOT NULL,
+#     value INT NOT NULL DEFAULT 0,
+#     UNIQUE KEY item_param(player_id, parameter_id),
+#     FOREIGN KEY (player_id) REFERENCES player(id) ON DELETE CASCADE,
+#     FOREIGN KEY (parameter_id) REFERENCES parameter(id) ON DELETE CASCADE
+# ) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
 
 
 
@@ -33,6 +93,8 @@ CREATE TABLE location (
   id INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(255) NOT NULL,
   type VARCHAR(255) NOT NULL,
+  width INT NOT NULL,
+  height INT NOT NULL,
   PRIMARY KEY(id)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
@@ -122,13 +184,10 @@ CREATE TABLE shop_item (
     FOREIGN KEY (typeid) REFERENCES shop_type (id) ON DELETE CASCADE
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
-# CREATE TABLE player_info (
-#   id INT NOT NULL AUTO_INCREMENT,
-#   location INT NOT NULL DEFAULT 1,
-#   PRIMARY KEY(id),
-#   FOREIGN KEY (id) REFERENCES player_auth(id) ON DELETE CASCADE
-# ) ENGINE=INNODB DEFAULT CHARSET=utf8;
-# 
+
+
+
+
 # CREATE TABLE player_slot (
 #   id INT NOT NULL AUTO_INCREMENT,
 #   slot_1 BIGINT NOT NULL DEFAULT 0,
