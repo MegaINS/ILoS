@@ -1,9 +1,7 @@
 package ru.megains.ilos.network.packet.server.data
 
-class PPlayerList(var list:Array[PPlayer]) {
+import scala.beans.BeanProperty
 
-    def getList: Array[PPlayer] = list
-
-
+class PPlayerList( @BeanProperty val  list:Array[PPlayer]) {
 
 }

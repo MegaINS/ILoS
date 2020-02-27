@@ -1,5 +1,6 @@
 package ru.megains.ilos.network.packet.server.data
 
-class PBodyItem(img:String) {
-    def getImg: String = img
+import scala.beans.BeanProperty
+
+class PBodyItem(@BeanProperty val img:String) {
 }

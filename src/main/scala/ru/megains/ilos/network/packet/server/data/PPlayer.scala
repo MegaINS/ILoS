@@ -1,8 +1,9 @@
 package ru.megains.ilos.network.packet.server.data
 
-class PPlayer(id:Int,name:String,level:Int) {
+import scala.beans.BeanProperty
 
-    def getId: Int = id
-    def getName: String = name
-    def getLevel: Int = level
+class PPlayer( @BeanProperty val id:Int,
+               @BeanProperty val name:String,
+               @BeanProperty val level:Int) {
+
 }

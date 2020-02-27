@@ -61,21 +61,19 @@ abstract class Location(val id: Int, val name: String,  val width: Int, val heig
         })
     }
 
-    def isCorrectDis(player: Player, x: Int, y: Int): Boolean = {Math.abs(player.posX - x) == 0 || Math.abs(player.posX - x) == 1 &&  Math.abs(player.posY - y) == 0 || Math.abs(player.posY - y) == 1}
-
+    def isCorrectDis(x: Int, y: Int): Boolean = {(x == 0 || Math.abs(x) == 1) && (y == 0 || Math.abs(y) == 1)}
 
     def click(player: Player, x: Int, y: Int): Unit = {
-        if (isCorrectDis(player, x, y)) {
+        if (isCorrectDis(x,y)) {
             player.setPlannedAction(() => {move(player, x, y)}, Timer.getTime(1))
         }
-
     }
 
     def correctCoordinate(x: Int, y: Int): Boolean
 
     def move(player: Player, x: Int, y: Int): Unit = {
-        player.posX = x
-        player.posY = y
+        player.posX += x
+        player.posY += y
         player.sendPacket(new PacketPlayerUpdate(Action.MOVE, player))
         val packet = new PacketEnemyUpdate(Action.MOVE, player)
         players.filter(_ != player).foreach(_.sendPacket(packet))

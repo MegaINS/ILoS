@@ -1,9 +1,9 @@
 package ru.megains.ilos.network.packet.server.data
 
-class PWarp(name:String,x:Int,y:Int) {
+import scala.beans.BeanProperty
 
+class PWarp( @BeanProperty val name:String,
+             @BeanProperty val x:Int,
+             @BeanProperty val y:Int) {
 
-    def getName: String = name
-    def getX: Int = x
-    def getY: Int = y
 }

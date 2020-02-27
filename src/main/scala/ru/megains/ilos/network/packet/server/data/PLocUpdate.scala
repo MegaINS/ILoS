@@ -1,8 +1,6 @@
 package ru.megains.ilos.network.packet.server.data
 
-class PLocUpdate(x:Int,val y:Int) {
-    def getX:Int = x
-    def getY:Int = y
+import scala.beans.BeanProperty
 
-
+class PLocUpdate( @BeanProperty val x:Int, @BeanProperty val  y:Int) {
 }
