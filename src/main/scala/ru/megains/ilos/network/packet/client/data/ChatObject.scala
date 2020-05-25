@@ -1,27 +1,15 @@
 package ru.megains.ilos.network.packet.client.data
 
+import scala.beans.BeanProperty
+
 class ChatObject() {
-    var userName: String =_
-    var message: String =_
-
-    def this(userName: String, message: String){
+    @BeanProperty var userName: String = _
+    @BeanProperty var message: String = _
+    def this(userNameIn: String, messageIn: String ){
         this()
-        this.userName = userName
-        this.message = message
+        userName = userNameIn
+        message = messageIn
     }
-
-    def getUserName: String = userName
-
-    def setUserName(userName: String): Unit = {
-        this.userName = userName
-    }
-
-    def getMessage: String = message
-
-    def setMessage(message: String): Unit = {
-        this.message = message
-    }
-
 
     override def toString = s"ChatObject($userName, $message)"
 }

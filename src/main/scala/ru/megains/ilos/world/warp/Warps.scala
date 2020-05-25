@@ -1,10 +1,13 @@
 package ru.megains.ilos.world.warp
 
-import ru.megains.ilos.database.DBWarp
+import ru.megains.ilos.db.dao.WarpDao
+
 
 object Warps {
 
-    val warps: Map[Int, Warp] = DBWarp.loadWarps()
+
+    var warpDao:WarpDao = _
+    lazy val warps: Map[Int, Warp] = warpDao.getWarps
 
     def getWarp(id: Int): Warp = {
         warps(id)

@@ -6,21 +6,21 @@ INSERT INTO auth (name, email, password) VALUES ('Test_2','aaaa@mail.ru','1111')
 INSERT INTO auth (name, email, password) VALUES ('Test_3','qwer@mail.ru','1111');
 INSERT INTO auth (name, email, password) VALUES ('Test_4','bbbb@mail.ru','1111');
 
-INSERT INTO player (player_id, level, location, pos_x, pos_y, money, health, healthMax, energy, energyMax, fightMinDamage, fightMaxDamage, workMinDamage, workMaxDamage, power, intellect, concentration, stamina)
+INSERT INTO player (id, level, location, pos_x, pos_y, money, health, health_max, energy, energy_max, fight_min_damage, fight_max_damage, work_min_damage, work_max_damage, power, intellect, concentration, stamina)
 VALUES (1,1,1,4,4,10,90,100,100,100,5,10,5,10,10,11,12,13);
-INSERT INTO player (player_id, level, location, pos_x, pos_y, money, health, healthMax, energy, energyMax, fightMinDamage, fightMaxDamage, workMinDamage, workMaxDamage, power, intellect, concentration, stamina)
+INSERT INTO player (id, level, location, pos_x, pos_y, money, health, health_max, energy, energy_max, fight_min_damage, fight_max_damage, work_min_damage, work_max_damage, power, intellect, concentration, stamina)
 VALUES (2,2,1,4,4,20,10,90,100,110,10,15,12,15,11,22,33,44);
-INSERT INTO player (player_id, level, location, pos_x, pos_y, money, health, healthMax, energy, energyMax, fightMinDamage, fightMaxDamage, workMinDamage, workMaxDamage, power, intellect, concentration, stamina)
+INSERT INTO player (id, level, location, pos_x, pos_y, money, health, health_max, energy, energy_max, fight_min_damage, fight_max_damage, work_min_damage, work_max_damage, power, intellect, concentration, stamina)
 VALUES (3,3,1,4,4,30,50,110,60,90,6,12,4,11,44,33,22,11);
-INSERT INTO player (player_id, level, location, pos_x, pos_y, money, health, healthMax, energy, energyMax, fightMinDamage, fightMaxDamage, workMinDamage, workMaxDamage, power, intellect, concentration, stamina)
+INSERT INTO player (id, level, location, pos_x, pos_y, money, health, health_max, energy, energy_max, fight_min_damage, fight_max_damage, work_min_damage, work_max_damage, power, intellect, concentration, stamina)
 VALUES (4,4,1,4,4,40,100,150,10,150,3,7,9,11,34,45,13,4);
 
 
 
 # INSERT INTO parameter (name) VALUES ('health');
-# INSERT INTO parameter (name) VALUES ('healthMax');
+# INSERT INTO parameter (name) VALUES ('health_max');
 # INSERT INTO parameter (name) VALUES ('energy');
-# INSERT INTO parameter (name) VALUES ('energyMax');
+# INSERT INTO parameter (name) VALUES ('energy_max');
 # INSERT INTO parameter (name) VALUES ('workDamage');
 # INSERT INTO parameter (name) VALUES ('power');
 # INSERT INTO parameter (name) VALUES ('intellect');
@@ -65,73 +65,73 @@ INSERT INTO location (name, type, width, height) VALUES ('forest_1','MINE',15,15
 INSERT INTO location (name, type, width, height) VALUES ('meadow_1','MINE',15,15);           #7
 INSERT INTO location (name, type, width, height) VALUES ('Первый магазин','SHOP',1,1);     #8
 
-INSERT INTO location_open (locationid, src) VALUES (1,'antiria');
+INSERT INTO location_open (location_id, src) VALUES (1,'antiria');
 
-INSERT INTO location_hab (locationid, area) VALUES (2,'mine');
-INSERT INTO location_hab (locationid, area) VALUES (3,'forest');
-INSERT INTO location_hab (locationid, area) VALUES (4,'meadow');
+INSERT INTO location_hab (location_id, area) VALUES (2,'mine');
+INSERT INTO location_hab (location_id, area) VALUES (3,'forest');
+INSERT INTO location_hab (location_id, area) VALUES (4,'meadow');
 
-INSERT INTO location_mine (locationid,class,level, type) VALUES (5,'CLASS_0',1,'MINE');
-INSERT INTO location_mine (locationid,class,level, type) VALUES (6,'CLASS_0',1,'FOREST');
-INSERT INTO location_mine (locationid,class,level, type) VALUES (7,'CLASS_0',1,'MEADOW');
+INSERT INTO location_mine (location_id,class,level, type) VALUES (5,'CLASS_0',1,'MINE');
+INSERT INTO location_mine (location_id,class,level, type) VALUES (6,'CLASS_0',1,'FOREST');
+INSERT INTO location_mine (location_id,class,level, type) VALUES (7,'CLASS_0',1,'MEADOW');
 
-INSERT INTO location_shop (locationid) VALUES (8);
+INSERT INTO location_shop (location_id) VALUES (8);
 
-INSERT INTO warp (name, locId, x, y, outId) VALUES ('in Hab mine', 1, 3, 1, 2);      #1
-INSERT INTO warp (name, locId, x, y, outId) VALUES ('in Antiria', 2, 2, 1, 1);       #2
+INSERT INTO warp (name, loc_id, x, y, out_id) VALUES ('in Hab mine', 1, 3, 1, 2);      #1
+INSERT INTO warp (name, loc_id, x, y, out_id) VALUES ('in Antiria', 2, 2, 1, 1);       #2
 
-INSERT INTO warp (name, locId, x, y, outId) VALUES ('in Hab meadow', 1, 11, 7, 4);   #3
-INSERT INTO warp (name, locId, x, y, outId) VALUES ('in Antiria', 3, 2, 1, 3);       #4
+INSERT INTO warp (name, loc_id, x, y, out_id) VALUES ('in Hab meadow', 1, 11, 7, 4);   #3
+INSERT INTO warp (name, loc_id, x, y, out_id) VALUES ('in Antiria', 3, 2, 1, 3);       #4
 
-INSERT INTO warp (name, locId, x, y, outId) VALUES ('in Hab forest', 1, 1, 7, 6);    #5
-INSERT INTO warp (name, locId, x, y, outId) VALUES ('in Antiria', 4, 2, 1, 5);       #6
+INSERT INTO warp (name, loc_id, x, y, out_id) VALUES ('in Hab forest', 1, 1, 7, 6);    #5
+INSERT INTO warp (name, loc_id, x, y, out_id) VALUES ('in Antiria', 4, 2, 1, 5);       #6
 
-INSERT INTO warp (name, locId, x, y, outId) VALUES ('in Mine', 2, 3, 2, 8);         #7
-INSERT INTO warp (name, locId, x, y, outId) VALUES ('in Hab', 5, 1, 1, 7);          #8
+INSERT INTO warp (name, loc_id, x, y, out_id) VALUES ('in Mine', 2, 3, 2, 8);         #7
+INSERT INTO warp (name, loc_id, x, y, out_id) VALUES ('in Hab', 5, 1, 1, 7);          #8
 
-INSERT INTO warp (name, locId, x, y, outId) VALUES ('in Forest', 3, 3, 2, 10);      #9
-INSERT INTO warp (name, locId, x, y, outId) VALUES ('in Hab', 6, 1, 1, 9);          #10
+INSERT INTO warp (name, loc_id, x, y, out_id) VALUES ('in Forest', 3, 3, 2, 10);      #9
+INSERT INTO warp (name, loc_id, x, y, out_id) VALUES ('in Hab', 6, 1, 1, 9);          #10
 
-INSERT INTO warp (name, locId, x, y, outId) VALUES ('in Meadow', 4, 3, 2, 12);      #11
-INSERT INTO warp (name, locId, x, y, outId) VALUES ('in Hab', 7, 1, 1, 11);         #12
+INSERT INTO warp (name, loc_id, x, y, out_id) VALUES ('in Meadow', 4, 3, 2, 12);      #11
+INSERT INTO warp (name, loc_id, x, y, out_id) VALUES ('in Hab', 7, 1, 1, 11);         #12
 
-INSERT INTO warp (name, locId, x, y, outId) VALUES ('in Shop', 1, 2, 5, 14);      #13
-INSERT INTO warp (name, locId, x, y, outId) VALUES ('in Antaris', 8, 0, 0, 13);         #14
-
-
-INSERT INTO resource (itemid, min, max, chance) VALUES (1, 1, 5, 10);     #1
-INSERT INTO resource (itemid, min, max, chance) VALUES (2, 1, 3, 5);      #2
-INSERT INTO resource (itemid, min, max, chance) VALUES (3, 1, 2, 1);      #3
-INSERT INTO resource (itemid, min, max, chance) VALUES (4, 1, 5, 10);     #4
-INSERT INTO resource (itemid, min, max, chance) VALUES (5, 1, 3, 5);      #5
-INSERT INTO resource (itemid, min, max, chance) VALUES (6, 1, 2, 1);      #6
-INSERT INTO resource (itemid, min, max, chance) VALUES (7, 1, 5, 10);     #7
-INSERT INTO resource (itemid, min, max, chance) VALUES (8, 1, 3, 5);      #8
-INSERT INTO resource (itemid, min, max, chance) VALUES (9, 1, 2, 1);      #9
-
-INSERT INTO resource_location (locationid, resourceid) VALUES (5, 1);     #1
-INSERT INTO resource_location (locationid, resourceid) VALUES (5, 2);     #2
-INSERT INTO resource_location (locationid, resourceid) VALUES (5, 3);     #3
-INSERT INTO resource_location (locationid, resourceid) VALUES (7, 4);     #4
-INSERT INTO resource_location (locationid, resourceid) VALUES (7, 5);     #5
-INSERT INTO resource_location (locationid, resourceid) VALUES (7, 6);     #6
-INSERT INTO resource_location (locationid, resourceid) VALUES (6, 7);     #7
-INSERT INTO resource_location (locationid, resourceid) VALUES (6, 8);     #8
-INSERT INTO resource_location (locationid, resourceid) VALUES (6, 9);     #9
+INSERT INTO warp (name, loc_id, x, y, out_id) VALUES ('in Shop', 1, 2, 5, 14);      #13
+INSERT INTO warp (name, loc_id, x, y, out_id) VALUES ('in Antaris', 8, 0, 0, 13);         #14
 
 
-INSERT INTO shop_group (shopid, name, src) VALUES (1,'Книги','books');           #1
-INSERT INTO shop_group (shopid, name, src) VALUES (1,'Инструменты','tools');     #2
+INSERT INTO resource (item_id, min, max, chance) VALUES (1, 1, 5, 10);     #1
+INSERT INTO resource (item_id, min, max, chance) VALUES (2, 1, 3, 5);      #2
+INSERT INTO resource (item_id, min, max, chance) VALUES (3, 1, 2, 1);      #3
+INSERT INTO resource (item_id, min, max, chance) VALUES (4, 1, 5, 10);     #4
+INSERT INTO resource (item_id, min, max, chance) VALUES (5, 1, 3, 5);      #5
+INSERT INTO resource (item_id, min, max, chance) VALUES (6, 1, 2, 1);      #6
+INSERT INTO resource (item_id, min, max, chance) VALUES (7, 1, 5, 10);     #7
+INSERT INTO resource (item_id, min, max, chance) VALUES (8, 1, 3, 5);      #8
+INSERT INTO resource (item_id, min, max, chance) VALUES (9, 1, 2, 1);      #9
 
-INSERT INTO shop_type (groupid, name, src) VALUES (1,'Книги','book');            #1
-INSERT INTO shop_type (groupid, name, src) VALUES (2,'Инструмент добычи','craft_forging');     #2
-INSERT INTO shop_type (groupid, name, src) VALUES (2,'"Инструмент создания','mine');     #3
+INSERT INTO resource_location (location_id, resource_id) VALUES (5, 1);     #1
+INSERT INTO resource_location (location_id, resource_id) VALUES (5, 2);     #2
+INSERT INTO resource_location (location_id, resource_id) VALUES (5, 3);     #3
+INSERT INTO resource_location (location_id, resource_id) VALUES (7, 4);     #4
+INSERT INTO resource_location (location_id, resource_id) VALUES (7, 5);     #5
+INSERT INTO resource_location (location_id, resource_id) VALUES (7, 6);     #6
+INSERT INTO resource_location (location_id, resource_id) VALUES (6, 7);     #7
+INSERT INTO resource_location (location_id, resource_id) VALUES (6, 8);     #8
+INSERT INTO resource_location (location_id, resource_id) VALUES (6, 9);     #9
 
 
-INSERT INTO shop_item (typeid, itemid, amount) VALUES (1,1,10);
-INSERT INTO shop_item (typeid, itemid, amount) VALUES (2,2,20);
-INSERT INTO shop_item (typeid, itemid, amount) VALUES (3,1,5);
-INSERT INTO shop_item (typeid, itemid, amount) VALUES (3,2,15);
+INSERT INTO shop_group (shop_id, name, src) VALUES (1,'Книги','books');           #1
+INSERT INTO shop_group (shop_id, name, src) VALUES (1,'Инструменты','tools');     #2
+
+INSERT INTO shop_type (group_id, name, src) VALUES (1,'Книги','book');            #1
+INSERT INTO shop_type (group_id, name, src) VALUES (2,'Инструмент добычи','craft_forging');     #2
+INSERT INTO shop_type (group_id, name, src) VALUES (2,'"Инструмент создания','mine');     #3
+
+
+INSERT INTO shop_item (type_id, item_id, amount) VALUES (1,1,10);
+INSERT INTO shop_item (type_id, item_id, amount) VALUES (2,2,20);
+INSERT INTO shop_item (type_id, item_id, amount) VALUES (3,1,5);
+INSERT INTO shop_item (type_id, item_id, amount) VALUES (3,2,15);
 
 
 

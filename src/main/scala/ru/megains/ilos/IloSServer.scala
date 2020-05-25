@@ -1,6 +1,8 @@
 package ru.megains.ilos
 
 import com.corundumstudio.socketio.{Configuration, SocketIOServer}
+import ru.megains.ilos.db.dao.DaoFactory
+import ru.megains.ilos.db.daoquill.QuillDaoFactory
 import ru.megains.ilos.network.packet.client.data.{ChatObject, PacketDataAction}
 import ru.megains.ilos.network.packet.client.{PacketAction, PacketChatEvent, PacketConnect}
 import ru.megains.ilos.utils.Logger
@@ -9,7 +11,7 @@ class IloSServer(config:Configuration) extends Logger[IloSServer]{
 
 
     val socketServer = new SocketIOServer(config)
-
+    var daoFactory:DaoFactory = QuillDaoFactory
     var isActive = true
     var playerList:PlayerList = new PlayerList(this)
     var gameLogicHandler:GameLogicHandler  = new GameLogicHandler(this)
@@ -18,10 +20,14 @@ class IloSServer(config:Configuration) extends Logger[IloSServer]{
     def start(): Unit = {
 
         log.info("Start IloSServer")
+        daoFactory.installDao()
 
         log.info("Start GameLogicHandler")
+
         gameLogicHandler.start()
         log.info("Start NetworkSystem")
+
+
 
         socketServer.addConnectListener(new PacketConnect(this))
 

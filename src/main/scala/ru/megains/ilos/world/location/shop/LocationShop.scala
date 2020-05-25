@@ -1,6 +1,6 @@
 package ru.megains.ilos.world.location.shop
 
-import ru.megains.ilos.database.DBShop
+
 import ru.megains.ilos.item.Items
 import ru.megains.ilos.network.packet.server.PacketShop
 import ru.megains.ilos.player.Player
@@ -8,12 +8,12 @@ import ru.megains.ilos.world.location.LocationType.LocationType
 import ru.megains.ilos.world.location.{Location, LocationType}
 
 
-class LocationShop(id: Int, shopId: Int, name: String, width: Int, height: Int) extends Location(id,name, width, height) {
+class LocationShop(id: Int, name: String,shopId: Int,width: Int,height: Int) extends Location(id,name, width, height) {
 
 
-    override var locationType: LocationType = LocationType.SHOP
+    var locationType: LocationType = LocationType.SHOP
 
-    val groups: List[Group] = DBShop.loadShopGroups(shopId)
+    val groups: List[Group] = Shops.getGroupsByShopId(shopId)
 
 
     override def correctCoordinate(x: Int, y: Int): Boolean = false

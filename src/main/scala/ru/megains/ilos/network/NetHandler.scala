@@ -10,7 +10,7 @@ class NetHandler(server:IloSServer,player: Player) {
 
 
     def processPacketChatEvent(data: ChatObject): Unit = {
-        data.setUserName(player.name)
+        data.userName = player.name
         println(data.toString)
         val packet = new PacketChat(data)
         server.playerList.players.values.foreach(_.sendPacket(packet))

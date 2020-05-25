@@ -4,7 +4,7 @@ import ru.megains.ilos.item.{Item, Items}
 
 import scala.util.Random
 
-class ResGen(itemId:Int, min:Int, max:Int,chance:Float) {
+case class ResGen(id:Int,itemId:Int, min:Int, max:Int,chance:Float) {
 
     val item: Item = Items.getItem(itemId)
 

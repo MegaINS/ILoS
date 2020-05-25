@@ -11,9 +11,9 @@ import ru.megains.ilos.{Action, Timer}
 import scala.collection.mutable.ArrayBuffer
 import scala.util.Random
 
-class LocationMine(id: Int, name: String, gameClass: GameClass, level: Int, val mineType: MineType, width: Int, height: Int) extends Location(id, name, width, height) {
+class LocationMine(id: Int,name: String, gameClass: GameClass, level: Int, val mineType: MineType,width: Int,height: Int) extends Location(id, name, width, height) {
 
-    override var locationType: LocationType = LocationType.MINE
+    var locationType: LocationType = LocationType.MINE
 
 
     val lvl = 1

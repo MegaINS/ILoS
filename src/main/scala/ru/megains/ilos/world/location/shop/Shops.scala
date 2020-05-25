@@ -1,18 +1,22 @@
 package ru.megains.ilos.world.location.shop
 
-import scala.collection.mutable
+import ru.megains.ilos.db.dao.ShopDao
+import ru.megains.ilos.item.ItemStack
 
 object Shops {
 
-    val shops = new mutable.HashMap[Int,LocationShop]()
 
-    def getShop(id:Int): LocationShop={
-        shops(id)
+    var shopDao:ShopDao = _
+
+    def getGroupTypesByGroupId(id: Int): List[Type] = {
+        shopDao.getGroupTypesByGroupId(id)
     }
 
-    def addShop(shop:LocationShop): Int ={
-        shops += shops.size -> shop
-        shops.size-1
+    def getGroupsByShopId(id: Int): List[Group] = {
+        shopDao.getGroupsByShopId(id)
     }
 
+    def getTypeItemsByTypeId(id: Int): List[ItemStack] = {
+        shopDao.getTypeItemsByTypeId(id)
+    }
 }

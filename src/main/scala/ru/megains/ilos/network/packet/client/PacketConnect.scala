@@ -5,7 +5,6 @@ import com.corundumstudio.socketio.listener.ConnectListener
 import ru.megains.ilos.IloSServer
 import ru.megains.ilos.network.NetHandler
 import ru.megains.ilos.network.packet.client.data.ChatObject
-import ru.megains.ilos.player.Player
 
 class PacketConnect(server:IloSServer) extends ConnectListener{
 
@@ -18,16 +17,15 @@ class PacketConnect(server:IloSServer) extends ConnectListener{
             case Some(session) =>
                 println("session")
 
-                val player = server.playerList.initializeConnectionToPlayer(session,client)
+                val playerOpt = server.playerList.initializeConnectionToPlayer(session,client)
 
-                val netHandler = new NetHandler(server,player)
-                player match {
-                    case _:Player =>
-
+                playerOpt match {
+                    case Some(player) =>
+                        val netHandler = new NetHandler(server,player)
                         client.set("player",netHandler)
                         client.sendEvent("chatevent",new ChatObject("SERVER","Добро пожаловать в игру "+player.name))
                         server.socketServer.getAllClients.stream().filter(c => c!= client).forEach(c => c.sendEvent("chatevent",new ChatObject("SERVER","Игрок "+player.name+ " вошел в игру")))
-                    case _ =>
+                    case None =>
                         println("player not found")
                         client.disconnect()
                 }

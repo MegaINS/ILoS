@@ -1,18 +1,40 @@
 package ru.megains.ilos.player
 
 import com.corundumstudio.socketio.SocketIOClient
+import ru.megains.ilos.db.dto.PlayerDto
 import ru.megains.ilos.inventory.PlayerInventory
 import ru.megains.ilos.network.packet.server._
 import ru.megains.ilos.utils.Logger
 import ru.megains.ilos.world.location.Location
 
 
-class Player(val id: Int, val name: String) extends Logger[Player] {
+class Player(val id: Int) extends Logger[Player]{
 
+    def this(nameIn:String, clientIn: SocketIOClient, playerDto: PlayerDto){
+        this(playerDto.id)
+        client = clientIn
+        name = nameIn
+        posX = playerDto.posX
+        posY = playerDto.posY
+        level = playerDto.level
+        health = playerDto.health
+        healthMax = playerDto.healthMax
+        energy =playerDto.energy
+        energyMax = playerDto.energyMax
+        fightMaxDamage = playerDto.fightMaxDamage
+        fightMinDamage = playerDto.fightMinDamage
+        workMaxDamage = playerDto.workMaxDamage
+        workMinDamage = playerDto.workMinDamage
+        power = playerDto.power
+        intellect = playerDto.intellect
+        concentration = playerDto.concentration
+        stamina = playerDto.stamina
+        money = playerDto.money
+    }
 
 
     var client: SocketIOClient = _
-
+    var name: String = _
     var posX = 0
     var posY = 0
     var level: Int = 0
@@ -102,9 +124,15 @@ class Player(val id: Int, val name: String) extends Logger[Player] {
         if(client!= null) client.sendEvent(packet.name, packet.data)
     }
 
-    def sendData(): Unit ={
+    def sendLocationInfo(): Unit ={
         location.sendData(this)
         location.sendPlayerList(this)
     }
+
+}
+object Player{
+    //def apply(id: Int, name: String): Player = new Player(id, name)
+
+   // def unapply(arg: Player): Option[(Int, String)] = Some(arg.id,arg.name)
 
 }

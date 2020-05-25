@@ -1,6 +1,6 @@
 package ru.megains.ilos.item
 
-class Item(val id:Int, val name:String, val level: Int, val weight:Int, val src:String) {
+case class Item(id:Int, name:String, level: Int, weight:Int, src:String) {
 
 
 }
