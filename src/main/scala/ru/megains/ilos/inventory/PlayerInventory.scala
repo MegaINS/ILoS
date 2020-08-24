@@ -8,8 +8,9 @@ import ru.megains.ilos.player.Player
 import scala.collection.mutable.ArrayBuffer
 
 class PlayerInventory(player:Player) extends Inventory {
-
-
+    def getItem(id: Int): Option[ItemStack] = {
+        items.find(_.id == id)
+    }
 
 
     var items:ArrayBuffer[ItemStack] = new ArrayBuffer[ItemStack]()
@@ -26,6 +27,16 @@ class PlayerInventory(player:Player) extends Inventory {
                 items += Items.createItemStack(item,amount)
                 player.sendPacket(new PacketChat(new ChatObject("PlayerInventory", s"В инвентарь добавлено ${item.name} $amount шт")))
                 player.sendPacket(new PacketPlayerInventory( player))
+        }
+    }
+
+    def removeItem(id: Int): Unit = {
+        items.find(_.id == id) match {
+            case Some(itemStack) =>
+                items -= itemStack
+                player.sendPacket(new PacketChat(new ChatObject("PlayerInventory", s"Из инвентаря удален ${itemStack.item.name} ${itemStack.amount} шт")))
+                player.sendPacket(new PacketPlayerInventory( player))
+            case None =>
         }
     }
 }

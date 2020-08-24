@@ -3,8 +3,8 @@ package ru.megains.ilos
 import com.corundumstudio.socketio.{Configuration, SocketIOServer}
 import ru.megains.ilos.db.dao.DaoFactory
 import ru.megains.ilos.db.daoquill.QuillDaoFactory
-import ru.megains.ilos.network.packet.client.data.{ChatObject, PacketDataAction}
-import ru.megains.ilos.network.packet.client.{PacketAction, PacketChatEvent, PacketConnect}
+import ru.megains.ilos.network.packet.client.data.{ChatObject, PacketDataAction, PacketDataInventoryAction}
+import ru.megains.ilos.network.packet.client.{PacketAction, PacketChatEvent, PacketConnect, PacketInventoryAction}
 import ru.megains.ilos.utils.Logger
 
 class IloSServer(config:Configuration) extends Logger[IloSServer]{
@@ -34,6 +34,9 @@ class IloSServer(config:Configuration) extends Logger[IloSServer]{
         socketServer.addEventListener("action", classOf[PacketDataAction], new PacketAction(this))
 
         socketServer.addEventListener("chatevent", classOf[ChatObject], new PacketChatEvent(this))
+
+        socketServer.addEventListener("inventoryAction", classOf[PacketDataInventoryAction], new PacketInventoryAction(this))
+
 
         socketServer.start()
 

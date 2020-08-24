@@ -35,24 +35,36 @@ VALUES (4,4,1,4,4,40,100,150,10,150,3,7,9,11,34,45,13,4);
 
 
 
-INSERT INTO item(name, src, level, cost, weight)
-VALUES ('Ржавае железо','materials-30',0,0,10);
-INSERT INTO item(name, src, level, cost,weight)
-VALUES ('Чугун','materials-23',1,0,50);
-INSERT INTO item(name, src, level, cost,weight)
-VALUES ('Медь','materials-29',1,0,25);
-INSERT INTO item(name, src, level, cost,weight)
-VALUES ('Кролик','materials-18',0,0,10);
-INSERT INTO item(name, src, level, cost,weight)
-VALUES ('Ольнь','materials-92',1,0,50);
-INSERT INTO item(name, src, level, cost,weight)
-VALUES ('Кабан','materials-80',1,0,25);
-INSERT INTO item(name, src, level, cost,weight)
-VALUES ('Трухлявый тополь','materials-49',0,0,10);
-INSERT INTO item(name, src, level, cost,weight)
-VALUES ('Ясень','materials-5',1,0,50);
-INSERT INTO item(name, src, level, cost,weight)
-VALUES ('Осина','materials-2',1,0,25);
+INSERT INTO item(name, src, level, cost, weight,item_action,item_type,item_slot)
+VALUES ('Ржавае железо','materials-30',0,0,10,'none','material','none');
+INSERT INTO item(name, src, level, cost,weight,item_action,item_type,item_slot)
+VALUES ('Чугун','materials-23',1,0,50,'none','material','none');
+INSERT INTO item(name, src, level, cost,weight,item_action,item_type,item_slot)
+VALUES ('Медь','materials-29',1,0,25,'none','material','none');
+INSERT INTO item(name, src, level, cost,weight,item_action,item_type,item_slot)
+VALUES ('Кролик','materials-18',0,0,10,'none','material','none');
+INSERT INTO item(name, src, level, cost,weight,item_action,item_type,item_slot)
+VALUES ('Ольнь','materials-92',1,0,50,'none','material','none');
+INSERT INTO item(name, src, level, cost,weight,item_action,item_type,item_slot)
+VALUES ('Кабан','materials-80',1,0,25,'none','material','none');
+INSERT INTO item(name, src, level, cost,weight,item_action,item_type,item_slot)
+VALUES ('Трухлявый тополь','materials-49',0,0,10,'none','material','none');
+INSERT INTO item(name, src, level, cost,weight,item_action,item_type,item_slot)
+VALUES ('Ясень','materials-5',1,0,50,'none','material','none');
+INSERT INTO item(name, src, level, cost,weight,item_action,item_type,item_slot)
+VALUES ('Осина','materials-2',1,0,25,'none','material','none');
+
+
+
+INSERT INTO item(name, src, level, cost,weight,item_action,item_type,item_slot)  #10
+VALUES ('Шахтер','books-23',1,10,25,'use','book','none');
+INSERT INTO item(name, src, level, cost,weight,item_action,item_type,item_slot)  #11
+VALUES ('Охотник','books-68',1,10,25,'use','book','none');
+INSERT INTO item(name, src, level, cost,weight,item_action,item_type,item_slot)  #12
+VALUES ('Дровосер','books-92',1,10,25,'use','book','none');
+
+
+
 
 
 
@@ -128,11 +140,13 @@ INSERT INTO shop_type (group_id, name, src) VALUES (2,'Инструмент до
 INSERT INTO shop_type (group_id, name, src) VALUES (2,'"Инструмент создания','mine');     #3
 
 
-INSERT INTO shop_item (type_id, item_id, amount) VALUES (1,1,10);
+
 INSERT INTO shop_item (type_id, item_id, amount) VALUES (2,2,20);
 INSERT INTO shop_item (type_id, item_id, amount) VALUES (3,1,5);
 INSERT INTO shop_item (type_id, item_id, amount) VALUES (3,2,15);
 
 
 
-
+INSERT INTO shop_item (type_id, item_id, amount) VALUES (1,10,1);
+INSERT INTO shop_item (type_id, item_id, amount) VALUES (1,11,1);
+INSERT INTO shop_item (type_id, item_id, amount) VALUES (1,12,1);

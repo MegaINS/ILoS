@@ -38,8 +38,6 @@ class LocationMine(id: Int,name: String, gameClass: GameClass, level: Int, val m
         warps.foreach(w => tileGrounds(w.x + w.y * height) = 0)
 
         resGens.foreach(_.generate(this))
-
-
     }
 
     override def click(player: Player, dX: Int, dY: Int): Unit = {
@@ -59,6 +57,10 @@ class LocationMine(id: Int,name: String, gameClass: GameClass, level: Int, val m
         val y = player.posY + dY
         tileGrounds(x + y * height) -= player.workMinDamage
         player.sendPacket(new PacketChat(new ChatObject("Location", s"На клетке х:$x у:$y удалено ${player.workMinDamage} породы, осталось ${tileGrounds(x + y * height)}")))
+
+
+        player.skills.addSkillPoints(mineType,9)
+
         player.sendPacket(new PacketPlayerUpdate(Action.MOVE, player))
         if (tileGrounds(x + y * height) <= 0) {
             tileGrounds(x + y * height) = 0
@@ -67,6 +69,7 @@ class LocationMine(id: Int,name: String, gameClass: GameClass, level: Int, val m
                     resources -= resource
                     player.sendPacket(new PacketChat(new ChatObject("Location", s"На клетке х:$x у:$y добыт   ${resource.item.name} в колличестве ${resource.amount} шт")))
                     player.inventory.addItem(resource.item, resource.amount)
+                    player.skills.addSkillPoints(mineType,10 * resource.amount)
                 case None =>
             }
             players.foreach(_.sendPacket(new PacketLocUpdate(x, y)))

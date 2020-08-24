@@ -7,7 +7,10 @@ class PItem(@BeanProperty val id:Int,
             @BeanProperty val amount:Int,
             @BeanProperty val itemClass:Int,
             @BeanProperty val weight:Int,
-            @BeanProperty val scr:String) {
+            @BeanProperty val scr:String,
+            @BeanProperty val itemAction:String,
+            @BeanProperty val itemType:String,
+            @BeanProperty val itemSlot:String) {
 
 
 }

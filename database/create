@@ -36,6 +36,16 @@ CREATE TABLE player (
     FOREIGN KEY (id) REFERENCES auth(id) ON DELETE CASCADE
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
+# CREATE TABLE skill (
+#     id INT NOT NULL AUTO_INCREMENT,
+#     player_id INT NOT NULL,
+#     item_id INT NOT NULL,
+#     amount INT NOT NULL,
+#     PRIMARY KEY(id),
+#     FOREIGN KEY (item_id) REFERENCES item (id) ON DELETE CASCADE,
+#     FOREIGN KEY (type_id) REFERENCES shop_type (id) ON DELETE CASCADE
+# ) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
 
 # CREATE TABLE player_parameters (
 #     player_id INT NOT NULL,
@@ -84,6 +94,9 @@ CREATE TABLE item(
   cost INT NOT NULL,
   weight INT NOT NULL,
   stack TINYINT(1) NOT NULL DEFAULT 1,
+  item_action VARCHAR(255) NOT NULL,
+  item_type VARCHAR(255) NOT NULL,
+  item_slot VARCHAR(255) NOT NULL,
   PRIMARY KEY(id)
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
 
@@ -203,13 +216,13 @@ CREATE TABLE shop_item (
 #   PRIMARY KEY(id),
 #   FOREIGN KEY(id) REFERENCES player_auth(id) ON DELETE CASCADE
 # ) ENGINE=INNODB DEFAULT CHARSET=utf8;
-# 
+#
 # CREATE TABLE location (
 #   id INT NOT NULL AUTO_INCREMENT,
 #   name VARCHAR(255) NOT NULL,
 #   PRIMARY KEY(id)
 # ) ENGINE=INNODB DEFAULT CHARSET=utf8;
-# 
+#
 # CREATE TABLE loc_object (
 #   loc_id INT NOT NULL,
 #   name VARCHAR(255) NOT NULL,
@@ -218,7 +231,7 @@ CREATE TABLE shop_item (
 #   UNIQUE KEY loc_object(loc_id,object_type,object_id),
 #   FOREIGN KEY (loc_id) REFERENCES location(id) ON DELETE CASCADE
 # ) ENGINE=INNODB DEFAULT CHARSET=utf8;
-# 
+#
 # CREATE TABLE item_base(
 #   id INT NOT NULL AUTO_INCREMENT,
 #   name VARCHAR(255) NOT NULL,
@@ -250,7 +263,7 @@ CREATE TABLE shop_item (
 #             'krit') NOT NULL DEFAULT 'none',
 #   PRIMARY KEY(id)
 # )ENGINE=INNODB DEFAULT CHARSET=utf8;
-# 
+#
 # CREATE TABLE item_param(
 #   id INT NOT NULL AUTO_INCREMENT,
 #   item_id INT NOT NULL,
@@ -261,8 +274,8 @@ CREATE TABLE shop_item (
 #   UNIQUE KEY item_param(item_id,param),
 #   FOREIGN KEY(item_id) REFERENCES item_base(id) ON DELETE CASCADE
 # ) ENGINE=INNODB DEFAULT CHARSET=utf8;
-# 
-# 
+#
+#
 # CREATE TABLE player_item(
 #   id BIGINT NOT NULL AUTO_INCREMENT,
 #   player_id INT NOT NULL,
@@ -274,19 +287,19 @@ CREATE TABLE shop_item (
 #   FOREIGN KEY(player_id) REFERENCES player_auth(id) ON DELETE CASCADE,
 #   FOREIGN KEY(item_id) REFERENCES item_base(id) ON DELETE CASCADE
 # ) ENGINE=INNODB DEFAULT CHARSET=utf8;
-# 
+#
 # CREATE TABLE store (
 #   id INT NOT NULL AUTO_INCREMENT,
 #   name VARCHAR(255) NOT NULL,
 #   PRIMARY KEY(id)
 # )ENGINE=INNODB DEFAULT CHARSET=utf8;
-# 
+#
 # CREATE TABLE store_tab (
 #   id INT NOT NULL AUTO_INCREMENT,
 #   name VARCHAR(255) NOT NULL,
 #   PRIMARY KEY(id)
 # )ENGINE=INNODB DEFAULT CHARSET=utf8;
-# 
+#
 # CREATE TABLE store_store_tab (
 #   id INT NOT NULL AUTO_INCREMENT,
 #   store_id INT NOT NULL,
@@ -296,7 +309,7 @@ CREATE TABLE shop_item (
 #   FOREIGN KEY (store_id) REFERENCES store(id) ON DELETE CASCADE,
 #   FOREIGN KEY (store_tab_id) REFERENCES store_tab(id) ON DELETE CASCADE
 # ) ENGINE=INNODB DEFAULT CHARSET=utf8;
-# 
+#
 # CREATE TABLE store_tab_item_base (
 #   id INT NOT NULL AUTO_INCREMENT,
 #   store_tab_id INT NOT NULL,

@@ -1,12 +1,13 @@
 package ru.megains.ilos.network
 
-import ru.megains.ilos.{Action, IloSServer}
-import ru.megains.ilos.network.packet.client.data.{ChatObject, PacketDataAction}
+import ru.megains.ilos.network.packet.client.data.{ChatObject, PacketDataAction, PacketDataInventoryAction}
 import ru.megains.ilos.network.packet.server.PacketChat
 import ru.megains.ilos.player.Player
 import ru.megains.ilos.world.location.shop.LocationShop
+import ru.megains.ilos.{Action, IloSServer, LocationAction}
 
 class NetHandler(server:IloSServer,player: Player) {
+
 
 
     def processPacketChatEvent(data: ChatObject): Unit = {
@@ -34,6 +35,20 @@ class NetHandler(server:IloSServer,player: Player) {
 
             case _ =>
                 println("PacketAction " + packet.action)
+        }
+    }
+
+
+    def processPacketInventoryAction(packet: PacketDataInventoryAction): Unit = {
+        packet.action match {
+            case LocationAction.TAKE =>
+
+            case LocationAction.TAKEOFF =>
+
+            case LocationAction.USE =>
+                player.useItem(packet.id)
+            case LocationAction.DROP =>
+                player.removeItem(packet.id)
         }
     }
 

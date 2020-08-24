@@ -17,7 +17,7 @@ class PacketDataAction() {
     }
 
 
-    override def toString = s"PacketAction($action, ${if(data!= null)  data./:("")(_ + " " + _) })"
+    override def toString = s"PacketAction($action, ${if(data!= null)  data.foldLeft("")(_ + " " + _) })"
   //override def toString = s"PacketAction($action, ${if(data!= null)  ("" /: data)(_ + " " + _) })"
 }
 
